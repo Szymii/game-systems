@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4l2r7rcadfvr"]
+
+[ext_resource type="Script" uid="uid://c3cwsixy4jmpn" path="res://src/Systems/TreeGenerator/center.gd" id="1_8fqpb"]
+[ext_resource type="Script" uid="uid://bfyuinbtdn5i5" path="res://src/Systems/TreeGenerator/camera_controller.gd" id="2_nsi40"]
+
+[node name="TreeGenerator" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("1_8fqpb")
+fill_color = Color(0, 0, 0, 0.5019608)
+outline_color = Color(0, 0, 0, 1)
+outline_width = 2.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("2_nsi40")
