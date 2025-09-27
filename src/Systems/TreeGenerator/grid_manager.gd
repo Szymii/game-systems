@@ -108,5 +108,3 @@ func _try_spawn_point(pos: Vector2) -> void:
 		var point := point_scene.instantiate() as Node2D
 		point.global_position = grid_pos
 		add_child(point)
-	else:
-		print("Cannot spawn at: ", grid_pos, " (in gap, occupied, or out of bounds)")

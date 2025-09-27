@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 
 [autoload]
 
-TreeGeneratorSignals="*res://src/Systems/TreeGenerator/Autoload/tree_generator_signals.gd"
+TreeGeneratorGlobals="*res://src/Systems/TreeGenerator/Autoload/tree_generator_globals.gd"
 
 [debug]
 

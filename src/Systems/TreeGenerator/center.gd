@@ -4,7 +4,7 @@ extends Node2D
 # step = 2
 @export var n_sides: int = 4:
 	set(value):
-		if(value % 2 != 0 and n_sides < value):
+		if (value % 2 != 0 and n_sides < value):
 			n_sides = clamp(value + 1, 4, 12)
 		else:
 			n_sides = clamp(value - 1, 4, 12)
@@ -37,8 +37,9 @@ func _draw() -> void:
 	draw_polygon(points, PackedColorArray([fill_color]))
 
 func _ready() -> void:
-	TreeGeneratorSignals.add_starting_point_signal.connect(_starting_point_added)
-	TreeGeneratorSignals.remove_starting_point_signal.connect(_starting_point_removed)
+	if not Engine.is_editor_hint():
+		TreeGeneratorGlobals.add_starting_point_signal.connect(_starting_point_added)
+		TreeGeneratorGlobals.remove_starting_point_signal.connect(_starting_point_removed)
 
 func _starting_point_added() -> void:
 	n_sides += 1
