@@ -1,12 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://boy5ce3rc6a3n"]
+[gd_scene load_steps=4 format=3 uid="uid://boy5ce3rc6a3n"]
 
 [ext_resource type="Script" uid="uid://iamts81lemk8" path="res://src/Systems/TreeGenerator/Point/point.gd" id="1_xjywp"]
+[ext_resource type="Texture2D" uid="uid://cfi6vbxx1owa1" path="res://assets/tree/point_textures/selection_ring.svg" id="2_selection_ring"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_thmsi"]
 resource_local_to_scene = true
 
 [node name="Point" type="Node2D" groups=["GraphPoint"]]
 script = ExtResource("1_xjywp")
+
+[node name="SelectionRing" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 0, 0.8)
+texture = ExtResource("2_selection_ring")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
