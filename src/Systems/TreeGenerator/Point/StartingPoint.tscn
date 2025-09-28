@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://boy5ce3rc6a3n"]
+[gd_scene load_steps=4 format=3 uid="uid://bx8y4ce3rc6a4n"]
 
-[ext_resource type="Script" uid="uid://iamts81lemk8" path="res://src/Systems/TreeGenerator/Point/point.gd" id="1_xjywp"]
+[ext_resource type="Script" path="res://src/Systems/TreeGenerator/Point/starting_point.gd" id="1_startingpoint"]
 [ext_resource type="Texture2D" uid="uid://cfi6vbxx1owa1" path="res://assets/tree/point_textures/selection_ring.svg" id="2_selection_ring"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_thmsi"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_starting"]
 resource_local_to_scene = true
 
-[node name="Point" type="Node2D" groups=["GraphPoint"]]
-script = ExtResource("1_xjywp")
+[node name="StartingPoint" type="Node2D" groups=["GraphPoint", "StartingPoint"]]
+script = ExtResource("1_startingpoint")
 
 [node name="SelectionRing" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -22,6 +22,6 @@ unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 unique_name_in_owner = true
-shape = SubResource("CircleShape2D_thmsi")
+shape = SubResource("CircleShape2D_starting")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

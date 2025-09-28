@@ -9,7 +9,6 @@ func _ready() -> void:
 	default_color = Color(1.0, 1.0, 1.0, 0.7)
 	add_to_group("ConnectionLine")
 
-	
 func setup(from_point: Point, to_point: Point) -> void:
 	point_a = from_point
 	point_b = to_point
@@ -35,7 +34,6 @@ func _is_point_on_line(pos: Vector2) -> bool:
 	var line_start: Vector2 = get_point_position(0)
 	var line_end: Vector2 = get_point_position(1)
 	
-	# Check if point is close to the line
 	var distance_to_line: float = _distance_to_line_segment(pos, line_start, line_end)
 	return distance_to_line <= width + 5.0 # Add some tolerance
 

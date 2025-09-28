@@ -24,10 +24,7 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 		TreeGeneratorGlobals.select_point(self)
 		_set_selected(true)
 	if event.is_action_pressed("cancel_interaction"):
-		if TreeGeneratorGlobals.get_selected_point() == self:
-			TreeGeneratorGlobals.deselect_point()
-		GlobalGraphManager.remove_point_from_graph(self)
-		queue_free()
+		remove_self()
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("alt_interaction"): # "F" key
@@ -39,6 +36,12 @@ func _unhandled_key_input(event: InputEvent) -> void:
 				TreeGeneratorGlobals.select_point(self)
 				_set_selected(true)
 				get_viewport().set_input_as_handled()
+
+func remove_self() -> void:
+	if TreeGeneratorGlobals.get_selected_point() == self:
+		TreeGeneratorGlobals.deselect_point()
+	GlobalGraphManager.remove_point_from_graph(self)
+	queue_free()
 
 func set_point_size(new_size: PointSize.POINT_SIZE) -> void:
 	var shape: CircleShape2D = collision.shape

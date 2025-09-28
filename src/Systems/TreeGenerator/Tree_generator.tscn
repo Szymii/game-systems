@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4l2r7rcadfvr"]
+[gd_scene load_steps=7 format=3 uid="uid://d4l2r7rcadfvr"]
 
-[ext_resource type="Script" uid="uid://c3cwsixy4jmpn" path="res://src/Systems/TreeGenerator/center.gd" id="1_33om6"]
+[ext_resource type="Script" uid="uid://c3cwsixy4jmpn" path="res://src/Systems/TreeGenerator/tree_center.gd" id="1_33om6"]
 [ext_resource type="Script" uid="uid://bs3fj6483l5y4" path="res://src/Systems/TreeGenerator/grid_manager.gd" id="2_itpmq"]
 [ext_resource type="PackedScene" uid="uid://boy5ce3rc6a3n" path="res://src/Systems/TreeGenerator/Point/Point.tscn" id="2_k8ada"]
 [ext_resource type="Script" uid="uid://bfyuinbtdn5i5" path="res://src/Systems/TreeGenerator/camera_controller.gd" id="3_k8ada"]
 [ext_resource type="PackedScene" uid="uid://bhrackjlny31i" path="res://src/Systems/TreeGenerator/UI/UI.tscn" id="5_k8ada"]
+[ext_resource type="PackedScene" uid="uid://u2hkbyu45q6" path="res://src/Systems/TreeGenerator/Point/StartingPoint.tscn" id="6_starting"]
 
 [node name="TreeGenerator" type="Node2D"]
 
@@ -17,6 +18,7 @@ grid_height = 32
 [node name="TreeCenter" type="Node2D" parent="."]
 script = ExtResource("1_33om6")
 fill_color = Color(0.15686275, 0.15686275, 0.15686275, 1)
+starting_point_scene = ExtResource("6_starting")
 
 [node name="Camera" type="Camera2D" parent="."]
 script = ExtResource("3_k8ada")

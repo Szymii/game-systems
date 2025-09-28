@@ -38,10 +38,10 @@ func _create_connection_line(point_a: Point, point_b: Point) -> void:
 	add_child(line)
 
 func _remove_connection_line(point_a: Point, point_b: Point) -> void:
-	var lines := get_tree().get_nodes_in_group("ConnectionLine") as Array[ConnectionLine]
-	var filtered_lines: Array[ConnectionLine] = lines.filter(func(line: ConnectionLine) -> bool:
+	var lines := get_tree().get_nodes_in_group("ConnectionLine") as Array[Node]
+	var filtered_lines: Array[Node] = lines.filter(func(line: ConnectionLine) -> bool:
 		return (line.point_a == point_a and line.point_b == point_b) or \
-		       (line.point_a == point_b and line.point_b == point_a)
+			   (line.point_a == point_b and line.point_b == point_a)
 	)
 	
 	if not filtered_lines.is_empty():
