@@ -5,6 +5,7 @@
 - **Avoid unnecessary comments** - Write readable code instead
 - **Comment only complex logic** - When the "why" isn't obvious
 - **Use descriptive names** - Make code self-documenting
+- **Private and public functions** - private starts with \_, public not
 
 ### Examples
 

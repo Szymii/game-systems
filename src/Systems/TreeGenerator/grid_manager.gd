@@ -22,7 +22,7 @@ func _get_grid_offset() -> Vector2:
 	var total_height := grid_height * cell_size
 	return Vector2(-total_width * 0.5, -total_height * 0.5)
 
-## @desc There can be gap in the center of the grid
+## There can be gap in the center of the grid
 func _get_center_gap_bounds() -> Dictionary[String, float]:
 	var center_x := grid_width / 2.0
 	var center_y := grid_height / 2.0
@@ -101,9 +101,9 @@ func _is_position_occupied(grid_pos: Vector2) -> bool:
 func _try_spawn_point(pos: Vector2) -> void:
 	var grid_pos := _snap_to_nearest_grid_intersection(pos)
 	var is_valid := (
-		grid_pos.x >= _get_grid_offset().x and 
-		grid_pos.x <= _get_grid_offset().x + grid_width * cell_size and 
-		grid_pos.y >= _get_grid_offset().y and 
+		grid_pos.x >= _get_grid_offset().x and
+		grid_pos.x <= _get_grid_offset().x + grid_width * cell_size and
+		grid_pos.y >= _get_grid_offset().y and
 		grid_pos.y <= _get_grid_offset().y + grid_height * cell_size
 	)
 	
