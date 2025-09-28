@@ -13,6 +13,7 @@ script = ExtResource("2_itpmq")
 point_scene = ExtResource("2_k8ada")
 grid_width = 32
 grid_height = 32
+gap_size = 6
 
 [node name="TreeCenter" type="Node2D" parent="."]
 script = ExtResource("1_33om6")

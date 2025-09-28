@@ -14,7 +14,6 @@ func _ready() -> void:
 	set_point_texture(texture_data)
 	_set_selected(false)
 	
-	# Connect to the selection signal to handle deselection of other points
 	TreeGeneratorGlobals.point_selected_signal.connect(_on_point_selected)
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
@@ -22,6 +21,8 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 		TreeGeneratorGlobals.select_point(self)
 		_set_selected(true)
 	if event.is_action_pressed("cancel_interaction"):
+		if TreeGeneratorGlobals.get_selected_point() == self:
+			TreeGeneratorGlobals.deselect_point()
 		queue_free()
 
 func set_point_size(new_size: PointSize.POINT_SIZE) -> void:
@@ -67,6 +68,5 @@ func _set_selected(selected: bool) -> void:
 		selection_ring.visible = selected
 
 func _on_point_selected(point: Point) -> void:
-	# Deselect this point if another point was selected
 	if point != self:
 		_set_selected(false)

@@ -3,6 +3,7 @@ extends Node
 signal add_starting_point_signal()
 signal remove_starting_point_signal()
 signal point_selected_signal(point: Point)
+signal point_deselected_signal()
 
 var selected_point: Point = null
 
@@ -16,6 +17,10 @@ func select_point(point: Point) -> void:
 	if selected_point != point:
 		selected_point = point
 		point_selected_signal.emit(point)
+
+func deselect_point() -> void:
+	selected_point = null
+	point_deselected_signal.emit()
 
 func get_selected_point() -> Point:
 	return selected_point

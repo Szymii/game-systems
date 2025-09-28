@@ -12,15 +12,18 @@ var cell_size: float = 60.0
 	set(value):
 		grid_height = max(7, value)
 		queue_redraw()
+@export var gap_size: int = 4:
+	set(value):
+		gap_size = value
+		queue_redraw()
 
 func _get_grid_offset() -> Vector2:
 	var total_width := grid_width * cell_size
 	var total_height := grid_height * cell_size
 	return Vector2(-total_width * 0.5, -total_height * 0.5)
 
-## @desc There is 4x4 gap in the center of the grid
+## @desc There can be gap in the center of the grid
 func _get_center_gap_bounds() -> Dictionary[String, float]:
-	var gap_size := 4.0
 	var center_x := grid_width / 2.0
 	var center_y := grid_height / 2.0
 	
