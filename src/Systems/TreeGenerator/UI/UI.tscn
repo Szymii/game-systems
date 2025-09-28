@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhrackjlny31i"]
+[gd_scene load_steps=9 format=3 uid="uid://bhrackjlny31i"]
 
 [ext_resource type="Script" uid="uid://cqkav6ccqnrmh" path="res://src/Systems/TreeGenerator/UI/add_btn.gd" id="1_7eean"]
 [ext_resource type="Script" uid="uid://ikf4wgpwn5si" path="res://src/Systems/TreeGenerator/UI/foldable_container.gd" id="1_wur1o"]
 [ext_resource type="Script" uid="uid://bkwngbcckcw1m" path="res://src/Systems/TreeGenerator/UI/remove_btn.gd" id="2_nvr3n"]
 [ext_resource type="Script" uid="uid://j676bpuiow8s" path="res://src/Systems/TreeGenerator/UI/properties_form.gd" id="4_6pu4w"]
 [ext_resource type="Script" uid="uid://bdtn4j7cx5ir8" path="res://src/Systems/TreeGenerator/UI/size_select.gd" id="4_r6hkt"]
+[ext_resource type="Script" uid="uid://drv1qote4rgxl" path="res://src/Systems/TreeGenerator/UI/texture_select.gd" id="6_et6xy"]
+[ext_resource type="Script" uid="uid://bb73w5o4n5v3j" path="res://src/Systems/TreeGenerator/Point/point_composites.gd" id="7_tlnj7"]
+
+[sub_resource type="Resource" id="Resource_vq4fo"]
+script = ExtResource("7_tlnj7")
+metadata/_custom_type_script = "uid://bb73w5o4n5v3j"
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -58,25 +64,6 @@ text = "Load"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="FoldableLeft" type="FoldableContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(160, 0)
-layout_mode = 2
-mouse_filter = 1
-folded = true
-title = "Stats"
-script = ExtResource("1_wur1o")
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableLeft"]
-visible = false
-layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 8
-
-[node name="VBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableLeft/MarginContainer"]
-layout_mode = 2
-
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
@@ -110,7 +97,15 @@ text = "Size"
 layout_mode = 2
 script = ExtResource("4_r6hkt")
 
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+layout_mode = 2
+text = "Texture"
+
+[node name="TextureSelect" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+layout_mode = 2
+script = ExtResource("6_et6xy")
+texture_res = SubResource("Resource_vq4fo")
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TopBar/Add" to="MarginContainer/VBoxContainer/TopBar/Add" method="_on_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TopBar/Remove" to="MarginContainer/VBoxContainer/TopBar/Remove" method="_on_pressed"]
-[connection signal="folding_changed" from="MarginContainer/VBoxContainer/HBoxContainer/FoldableLeft" to="MarginContainer/VBoxContainer/HBoxContainer/FoldableLeft" method="_on_folding_changed"]
 [connection signal="folding_changed" from="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight" to="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight" method="_on_folding_changed"]
