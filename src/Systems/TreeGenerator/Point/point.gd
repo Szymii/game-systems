@@ -6,10 +6,13 @@ extends Node2D
 @onready var collision: CollisionShape2D = %CollisionShape2D
 
 const TEXTURE_DEFAULT_SIZE := 64.0
-
-var size: PointSize.POINT_SIZE = PointSize.POINT_SIZE.SM
-var texture_data: PointTextureData = PointTextureData.new("res://assets/tree/point_textures/empty.svg", "Empty")
 var is_selected: bool = false
+
+var texture_data: PointTextureData = PointTextureData.new("res://assets/tree/point_textures/empty.svg", "Empty")
+var size: PointSize.POINT_SIZE = PointSize.POINT_SIZE.SM
+var stat: Stat.STAT
+var stat_mode: StatMode.STAT_MODE
+var value: int = 0
 
 func _ready() -> void:
 	set_point_size(size)
@@ -75,6 +78,24 @@ func get_collision_radius() -> float:
 
 func get_point_size() -> PointSize.POINT_SIZE:
 	return size
+
+func set_stat(new_stat: Stat.STAT) -> void:
+	stat = new_stat
+
+func get_stat() -> Stat.STAT:
+	return stat
+
+func set_stat_mode(new_stat_mode: StatMode.STAT_MODE) -> void:
+	stat_mode = new_stat_mode
+
+func get_stat_mode() -> StatMode.STAT_MODE:
+	return stat_mode
+
+func set_value(new_value: int) -> void:
+	value = new_value
+
+func get_value() -> int:
+	return value
 
 func _set_selected(selected: bool) -> void:
 	is_selected = selected

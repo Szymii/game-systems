@@ -1,4 +1,4 @@
-class_name PointComposites
+class_name PointTextures
 extends Resource
 
 var textures: Array[PointTextureData] = [

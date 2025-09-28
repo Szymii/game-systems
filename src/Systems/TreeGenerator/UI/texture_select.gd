@@ -1,6 +1,6 @@
 extends OptionButton
 
-@export var texture_res: PointComposites
+@export var texture_res: PointTextures
 
 func _ready() -> void:
 	if texture_res and texture_res.textures:
