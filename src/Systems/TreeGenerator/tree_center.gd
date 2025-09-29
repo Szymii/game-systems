@@ -46,7 +46,7 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		TreeGeneratorGlobals.add_starting_point_signal.connect(_starting_point_added)
 		TreeGeneratorGlobals.remove_starting_point_signal.connect(_starting_point_removed)
-		_spawn_starting_points()
+		call_deferred("_spawn_starting_points")
 
 func _starting_point_added() -> void:
 	n_sides += 1
@@ -55,9 +55,6 @@ func _starting_point_removed() -> void:
 	n_sides -= 1
 
 func _spawn_starting_points() -> void:
-	if Engine.is_editor_hint() or not starting_point_scene:
-		return
-	
 	_clear_starting_points()
 	
 	var angle_step := TAU / n_sides

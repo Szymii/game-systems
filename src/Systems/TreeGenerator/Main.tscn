@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://d4l2r7rcadfvr"]
+
+[ext_resource type="Script" uid="uid://bs3fj6483l5y4" path="res://src/Systems/TreeGenerator/grid_manager.gd" id="1_bal8j"]
+[ext_resource type="PackedScene" uid="uid://boy5ce3rc6a3n" path="res://src/Systems/TreeGenerator/Point/Point.tscn" id="2_qjwxb"]
+[ext_resource type="Script" uid="uid://c3cwsixy4jmpn" path="res://src/Systems/TreeGenerator/tree_center.gd" id="3_y2l5e"]
+[ext_resource type="PackedScene" uid="uid://u2hkbyu45q6" path="res://src/Systems/TreeGenerator/Point/StartingPoint.tscn" id="4_otpaq"]
+[ext_resource type="Script" uid="uid://bfyuinbtdn5i5" path="res://src/Systems/TreeGenerator/camera_controller.gd" id="5_1fr4o"]
+[ext_resource type="PackedScene" uid="uid://bhrackjlny31i" path="res://src/Systems/TreeGenerator/UI/UI.tscn" id="6_pwpjy"]
+[ext_resource type="Script" uid="uid://dv15u53gnv8s0" path="res://src/Systems/TreeGenerator/graph_manager.gd" id="7_qjwxb"]
+
+[node name="Main" type="Node2D"]
+
+[node name="GridManager" type="Node2D" parent="."]
+script = ExtResource("1_bal8j")
+point_scene = ExtResource("2_qjwxb")
+grid_width = 32
+grid_height = 32
+
+[node name="TreeCenter" type="Node2D" parent="."]
+script = ExtResource("3_y2l5e")
+fill_color = Color(0.15686275, 0.15686275, 0.15686275, 1)
+starting_point_scene = ExtResource("4_otpaq")
+
+[node name="Camera" type="Camera2D" parent="."]
+script = ExtResource("5_1fr4o")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("6_pwpjy")]
+
+[node name="Utils" type="Node" parent="."]
+
+[node name="GraphManager" type="Node" parent="Utils"]
+script = ExtResource("7_qjwxb")

@@ -21,8 +21,8 @@ func _ready() -> void:
 	set_point_texture(texture_data)
 	_set_selected(false)
 	
+	TreeGeneratorGlobals.register_point_in_graph(self)
 	TreeGeneratorGlobals.point_selected_signal.connect(_on_point_selected)
-	GlobalGraphManager.add_point_to_graph(self)
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("interaction"):
@@ -37,7 +37,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		if selected_point and selected_point != self:
 			var mouse_pos: Vector2 = get_global_mouse_position()
 			if _is_mouse_over_point(mouse_pos):
-				GlobalGraphManager.try_connect_points(selected_point, self)
+				TreeGeneratorGlobals.connect_points(selected_point, self)
 				TreeGeneratorGlobals.select_point(self)
 				_set_selected(true)
 				get_viewport().set_input_as_handled()
@@ -45,7 +45,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func remove_self() -> void:
 	if TreeGeneratorGlobals.get_selected_point() == self:
 		TreeGeneratorGlobals.deselect_point()
-	GlobalGraphManager.remove_point_from_graph(self)
+
+	TreeGeneratorGlobals.deregister_point_from_graph(self)
 	queue_free()
 
 func set_point_size(new_size: PointSize.POINT_SIZE) -> void:

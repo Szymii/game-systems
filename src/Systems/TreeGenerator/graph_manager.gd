@@ -5,11 +5,15 @@ var graph: Graph
 
 func _ready() -> void:
 	graph = Graph.new()
+	TreeGeneratorGlobals.register_point_in_graph_signal.connect(_add_point_to_graph)
+	TreeGeneratorGlobals.deregister_point_from_graph_signal.connect(_remove_point_from_graph)
+	TreeGeneratorGlobals.connect_points_signal.connect(_try_connect_points)
+	TreeGeneratorGlobals.remove_connection_signal.connect(_remove_connection)
 
-func add_point_to_graph(point: Point) -> void:
+func _add_point_to_graph(point: Point) -> void:
 	graph.add_point(point)
 
-func remove_point_from_graph(point: Point) -> void:
+func _remove_point_from_graph(point: Point) -> void:
 	# Remove all visual connections for this point
 	var connections_to_remove: Array[Point] = graph.get_connections(point)
 	for connected_point in connections_to_remove:
@@ -18,13 +22,13 @@ func remove_point_from_graph(point: Point) -> void:
 	# Remove from graph
 	graph.remove_point(point)
 
-func try_connect_points(point_a: Point, point_b: Point) -> bool:
+func _try_connect_points(point_a: Point, point_b: Point) -> bool:
 	if graph.add_connection(point_a, point_b):
 		_create_connection_line(point_a, point_b)
 		return true
 	return false
 
-func remove_connection(point_a: Point, point_b: Point) -> bool:
+func _remove_connection(point_a: Point, point_b: Point) -> bool:
 	if graph.remove_connection(point_a, point_b):
 		_remove_connection_line(point_a, point_b)
 		return true

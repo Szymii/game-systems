@@ -35,7 +35,7 @@ func _is_point_on_line(pos: Vector2) -> bool:
 	var line_end: Vector2 = get_point_position(1)
 	
 	var distance_to_line: float = _distance_to_line_segment(pos, line_start, line_end)
-	return distance_to_line <= width + 5.0 # Add some tolerance
+	return distance_to_line <= width + 3.0 # Add some tolerance
 
 func _distance_to_line_segment(point: Vector2, line_start: Vector2, line_end: Vector2) -> float:
 	var line_vec: Vector2 = line_end - line_start
@@ -53,5 +53,5 @@ func _distance_to_line_segment(point: Vector2, line_start: Vector2, line_end: Ve
 
 func _remove_connection() -> void:
 	if point_a and point_b:
-		GlobalGraphManager.remove_connection(point_a, point_b)
+		TreeGeneratorGlobals.remove_connection(point_a, point_b)
 		queue_free()
