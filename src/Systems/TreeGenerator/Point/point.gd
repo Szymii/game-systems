@@ -8,6 +8,7 @@ extends Node2D
 const TEXTURE_DEFAULT_SIZE := 64.0
 var is_selected: bool = false
 
+var point_id: int
 var texture_data: PointTextureData = PointTextureData.new("res://assets/tree/point_textures/empty.svg", "Empty")
 var size: PointSize.POINT_SIZE = PointSize.POINT_SIZE.SM
 var stat: Stat.STAT
@@ -15,6 +16,7 @@ var stat_mode: StatMode.STAT_MODE
 var value: int = 0
 
 func _ready() -> void:
+	point_id = self.get_instance_id()
 	set_point_size(size)
 	set_point_texture(texture_data)
 	_set_selected(false)
@@ -69,6 +71,16 @@ func set_point_texture(_texture_data: PointTextureData) -> void:
 		sprite.texture = _texture_data.texture
 		texture_data = _texture_data
 		
+func set_stat(new_stat: Stat.STAT) -> void:
+	stat = new_stat
+
+func set_stat_mode(new_stat_mode: StatMode.STAT_MODE) -> void:
+	stat_mode = new_stat_mode
+
+
+func set_value(new_value: int) -> void:
+	value = new_value
+
 func get_texture_data() -> PointTextureData:
 	return texture_data
 
@@ -79,23 +91,17 @@ func get_collision_radius() -> float:
 func get_point_size() -> PointSize.POINT_SIZE:
 	return size
 
-func set_stat(new_stat: Stat.STAT) -> void:
-	stat = new_stat
-
 func get_stat() -> Stat.STAT:
 	return stat
-
-func set_stat_mode(new_stat_mode: StatMode.STAT_MODE) -> void:
-	stat_mode = new_stat_mode
 
 func get_stat_mode() -> StatMode.STAT_MODE:
 	return stat_mode
 
-func set_value(new_value: int) -> void:
-	value = new_value
-
 func get_value() -> int:
 	return value
+
+func get_id() -> int:
+	return point_id
 
 func _set_selected(selected: bool) -> void:
 	is_selected = selected

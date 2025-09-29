@@ -2,7 +2,6 @@ class_name GraphManager
 extends Node
 
 var graph: Graph
-# var connection_lines: Dictionary[String, ConnectionLine] = {}
 
 func _ready() -> void:
 	graph = Graph.new()
@@ -47,12 +46,3 @@ func _remove_connection_line(point_a: Point, point_b: Point) -> void:
 	if not filtered_lines.is_empty():
 		var matching_line: ConnectionLine = filtered_lines.front()
 		matching_line.queue_free()
-
-func _get_connection_key(point_a: Point, point_b: Point) -> String:
-	var id_a: int = point_a.get_instance_id()
-	var id_b: int = point_b.get_instance_id()
-	# Always use smaller id first to ensure consistent key
-	if id_a < id_b:
-		return str(id_a) + "-" + str(id_b)
-	else:
-		return str(id_b) + "-" + str(id_a)

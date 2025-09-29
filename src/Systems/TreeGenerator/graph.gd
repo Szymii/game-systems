@@ -10,11 +10,10 @@ var connections: Dictionary[int, Array] = {}
 func add_point(point: Point) -> void:
 	if point not in points:
 		points.append(point)
-		var point_id: int = point.get_instance_id()
-		connections[point_id] = []
+		connections[point.get_id()] = []
 
 func remove_point(point: Point) -> void:
-	var point_id: int = point.get_instance_id()
+	var point_id: int = point.get_id()
 	if point_id not in connections:
 		return
 	
@@ -29,8 +28,8 @@ func add_connection(point_a: Point, point_b: Point) -> bool:
 	if not _can_connect(point_a, point_b):
 		return false
 	
-	var id_a: int = point_a.get_instance_id()
-	var id_b: int = point_b.get_instance_id()
+	var id_a: int = point_a.get_id()
+	var id_b: int = point_b.get_id()
 	
 	var connections_a: Array = connections[id_a]
 	var connections_b: Array = connections[id_b]
@@ -40,8 +39,8 @@ func add_connection(point_a: Point, point_b: Point) -> bool:
 	return true
 
 func remove_connection(point_a: Point, point_b: Point) -> bool:
-	var id_a: int = point_a.get_instance_id()
-	var id_b: int = point_b.get_instance_id()
+	var id_a: int = point_a.get_id()
+	var id_b: int = point_b.get_id()
 	
 	return remove_connection_by_id(id_a, id_b)
 
@@ -57,7 +56,7 @@ func remove_connection_by_id(id_a: int, id_b: int) -> bool:
 	return true
 
 func get_connections(point: Point) -> Array[Point]:
-	var point_id: int = point.get_instance_id()
+	var point_id: int = point.get_id()
 	if point_id not in connections:
 		return []
 	
@@ -71,8 +70,8 @@ func get_connections(point: Point) -> Array[Point]:
 	return connected_points
 
 func _are_connected(point_a: Point, point_b: Point) -> bool:
-	var id_a: int = point_a.get_instance_id()
-	var id_b: int = point_b.get_instance_id()
+	var id_a: int = point_a.get_id()
+	var id_b: int = point_b.get_id()
 	
 	if id_a not in connections:
 		return false
@@ -87,13 +86,13 @@ func _can_connect(point_a: Point, point_b: Point) -> bool:
 	if _are_connected(point_a, point_b):
 		return false
 	
-	var id_a: int = point_a.get_instance_id()
-	var id_b: int = point_b.get_instance_id()
+	var id_a: int = point_a.get_id()
+	var id_b: int = point_b.get_id()
 	
 	return id_a in connections and id_b in connections
 
 func _find_point_by_id(point_id: int) -> Point:
 	for point in points:
-		if point.get_instance_id() == point_id:
+		if point.get_id() == point_id:
 			return point
 	return null
