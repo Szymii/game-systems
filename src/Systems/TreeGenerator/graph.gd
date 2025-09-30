@@ -19,7 +19,7 @@ func remove_point(point: Point) -> void:
 	
 	var connected_points: Array = connections[point_id].duplicate()
 	for connected_point_id: int in connected_points:
-		remove_connection_by_id(point_id, connected_point_id)
+		_remove_connection_by_id(point_id, connected_point_id)
 	
 	points.erase(point)
 	connections.erase(point_id)
@@ -42,18 +42,7 @@ func remove_connection(point_a: Point, point_b: Point) -> bool:
 	var id_a: int = point_a.get_id()
 	var id_b: int = point_b.get_id()
 	
-	return remove_connection_by_id(id_a, id_b)
-
-func remove_connection_by_id(id_a: int, id_b: int) -> bool:
-	if id_a not in connections or id_b not in connections:
-		return false
-	
-	var connections_a: Array = connections[id_a]
-	var connections_b: Array = connections[id_b]
-	connections_a.erase(id_b)
-	connections_b.erase(id_a)
-	
-	return true
+	return _remove_connection_by_id(id_a, id_b)
 
 func get_connections(point: Point) -> Array[Point]:
 	var point_id: int = point.get_id()
@@ -68,6 +57,17 @@ func get_connections(point: Point) -> Array[Point]:
 			connected_points.append(connected_point)
 	
 	return connected_points
+
+func _remove_connection_by_id(id_a: int, id_b: int) -> bool:
+	if id_a not in connections or id_b not in connections:
+		return false
+	
+	var connections_a: Array = connections[id_a]
+	var connections_b: Array = connections[id_b]
+	connections_a.erase(id_b)
+	connections_b.erase(id_a)
+	
+	return true
 
 func _are_connected(point_a: Point, point_b: Point) -> bool:
 	var id_a: int = point_a.get_id()

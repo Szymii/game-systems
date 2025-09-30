@@ -1,5 +1,8 @@
 extends Node
 
+signal save_tree_signal()
+signal load_tree_signal()
+
 signal add_starting_point_signal()
 signal remove_starting_point_signal()
 signal point_selected_signal(point: Point)
@@ -10,6 +13,12 @@ signal connect_points_signal(point_a: Point, point_b: Point)
 signal remove_connection_signal(point_a: Point, point_b: Point)
 
 var selected_point: Point = null
+
+func save_tree() -> void:
+	save_tree_signal.emit()
+
+func load_tree() -> void:
+	load_tree_signal.emit()
 
 func add_starting_point() -> void:
 	add_starting_point_signal.emit()

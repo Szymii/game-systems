@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d4l2r7rcadfvr"]
+[gd_scene load_steps=9 format=3 uid="uid://d4l2r7rcadfvr"]
 
 [ext_resource type="Script" uid="uid://bs3fj6483l5y4" path="res://src/Systems/TreeGenerator/grid_manager.gd" id="1_bal8j"]
 [ext_resource type="PackedScene" uid="uid://boy5ce3rc6a3n" path="res://src/Systems/TreeGenerator/Point/Point.tscn" id="2_qjwxb"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bfyuinbtdn5i5" path="res://src/Systems/TreeGenerator/camera_controller.gd" id="5_1fr4o"]
 [ext_resource type="PackedScene" uid="uid://bhrackjlny31i" path="res://src/Systems/TreeGenerator/UI/UI.tscn" id="6_pwpjy"]
 [ext_resource type="Script" uid="uid://dv15u53gnv8s0" path="res://src/Systems/TreeGenerator/graph_manager.gd" id="7_qjwxb"]
+[ext_resource type="Script" uid="uid://bx0dkg1yofppu" path="res://src/Systems/TreeGenerator/save_load.gd" id="8_y2l5e"]
 
 [node name="Main" type="Node2D"]
 
@@ -30,3 +31,6 @@ script = ExtResource("5_1fr4o")
 
 [node name="GraphManager" type="Node" parent="Utils"]
 script = ExtResource("7_qjwxb")
+
+[node name="SaveLoad" type="Node" parent="Utils"]
+script = ExtResource("8_y2l5e")

@@ -1,12 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhrackjlny31i"]
+[gd_scene load_steps=14 format=3 uid="uid://bhrackjlny31i"]
 
 [ext_resource type="Script" uid="uid://cqkav6ccqnrmh" path="res://src/Systems/TreeGenerator/UI/add_btn.gd" id="1_7eean"]
 [ext_resource type="Script" uid="uid://ikf4wgpwn5si" path="res://src/Systems/TreeGenerator/UI/foldable_container.gd" id="1_wur1o"]
 [ext_resource type="Script" uid="uid://bkwngbcckcw1m" path="res://src/Systems/TreeGenerator/UI/remove_btn.gd" id="2_nvr3n"]
+[ext_resource type="Script" uid="uid://d2fjhwiyc07qh" path="res://src/Systems/TreeGenerator/UI/save_btn.gd" id="3_m0k41"]
+[ext_resource type="Script" uid="uid://c245eh4lruf7p" path="res://src/Systems/TreeGenerator/UI/load_btn.gd" id="4_2rjix"]
 [ext_resource type="Script" uid="uid://j676bpuiow8s" path="res://src/Systems/TreeGenerator/UI/properties_form.gd" id="4_6pu4w"]
 [ext_resource type="Script" uid="uid://bdtn4j7cx5ir8" path="res://src/Systems/TreeGenerator/UI/size_select.gd" id="4_r6hkt"]
 [ext_resource type="Script" uid="uid://drv1qote4rgxl" path="res://src/Systems/TreeGenerator/UI/texture_select.gd" id="6_et6xy"]
-[ext_resource type="Script" uid="uid://bb73w5o4n5v3j" path="res://src/Systems/TreeGenerator/Point/point_textures.gd" id="7_tlnj7"]
+[ext_resource type="Script" uid="uid://bb73w5o4n5v3j" path="res://src/Common/point_textures.gd" id="7_tlnj7"]
 [ext_resource type="Script" uid="uid://cwanq5vdt0l5e" path="res://src/Systems/TreeGenerator/UI/stat_select.gd" id="8_0qobm"]
 [ext_resource type="Script" uid="uid://ci11wencjo2g8" path="res://src/Systems/TreeGenerator/UI/stat_mode_select.gd" id="9_nf0g0"]
 [ext_resource type="Script" uid="uid://clljo11sytfjt" path="res://src/Systems/TreeGenerator/UI/text_edit.gd" id="10_m0k41"]
@@ -55,13 +57,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 
-[node name="Save" type="Button" parent="MarginContainer/VBoxContainer/TopBar"]
+[node name="SaveBtn" type="Button" parent="MarginContainer/VBoxContainer/TopBar"]
 layout_mode = 2
 text = "Save"
+script = ExtResource("3_m0k41")
 
-[node name="Load" type="Button" parent="MarginContainer/VBoxContainer/TopBar"]
+[node name="LoadBtn" type="Button" parent="MarginContainer/VBoxContainer/TopBar"]
 layout_mode = 2
 text = "Load"
+script = ExtResource("4_2rjix")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -140,4 +144,6 @@ script = ExtResource("10_m0k41")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TopBar/Add" to="MarginContainer/VBoxContainer/TopBar/Add" method="_on_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TopBar/Remove" to="MarginContainer/VBoxContainer/TopBar/Remove" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TopBar/SaveBtn" to="MarginContainer/VBoxContainer/TopBar/SaveBtn" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TopBar/LoadBtn" to="MarginContainer/VBoxContainer/TopBar/LoadBtn" method="_on_pressed"]
 [connection signal="folding_changed" from="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight" to="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight" method="_on_folding_changed"]
