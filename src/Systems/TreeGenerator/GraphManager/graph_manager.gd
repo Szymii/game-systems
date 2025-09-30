@@ -1,6 +1,7 @@
 class_name GraphManager
 extends Node
 
+@onready var graph_layer: Node2D = %GraphLayer
 var graph: Graph
 
 func _ready() -> void:
@@ -19,7 +20,6 @@ func _remove_point_from_graph(point: Point) -> void:
 	for connected_point in connections_to_remove:
 		_remove_connection_line(point, connected_point)
 	
-	# Remove from graph
 	graph.remove_point(point)
 
 func _try_connect_points(point_a: Point, point_b: Point) -> bool:
@@ -38,7 +38,7 @@ func _create_connection_line(point_a: Point, point_b: Point) -> void:
 	var line := ConnectionLine.new()
 	line.setup(point_a, point_b)
 	
-	add_child(line)
+	graph_layer.add_child(line)
 
 func _remove_connection_line(point_a: Point, point_b: Point) -> void:
 	var lines := get_tree().get_nodes_in_group("ConnectionLine") as Array[Node]
@@ -50,3 +50,6 @@ func _remove_connection_line(point_a: Point, point_b: Point) -> void:
 	if not filtered_lines.is_empty():
 		var matching_line: ConnectionLine = filtered_lines.front()
 		matching_line.queue_free()
+
+func on_tree_save(saved_data: SavedData) -> void:
+	pass

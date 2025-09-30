@@ -1,3 +1,3 @@
 class_name Stat
 
-enum STAT {DEX, INT, STR, CHAOS}
+enum STAT {DEX = 1, INT, STR, CHAOS}

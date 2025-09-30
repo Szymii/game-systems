@@ -11,8 +11,8 @@ var is_selected: bool = false
 var point_id: int
 var texture_data: PointTextureData = PointTextureData.new("res://assets/tree/point_textures/empty.svg", "Empty")
 var size: PointSize.POINT_SIZE = PointSize.POINT_SIZE.SM
-var stat: Stat.STAT
-var stat_mode: StatMode.STAT_MODE
+var stat: Stat.STAT = Stat.STAT.DEX
+var stat_mode: StatMode.STAT_MODE = StatMode.STAT_MODE.FLAT
 var value: int = 0
 
 func _ready() -> void:
@@ -116,3 +116,6 @@ func _on_point_selected(point: Point) -> void:
 func _is_mouse_over_point(mouse_pos: Vector2) -> bool:
 	var distance: float = global_position.distance_to(mouse_pos)
 	return distance <= get_collision_radius()
+
+func on_tree_save(saved_data: SavedData) -> void:
+	pass

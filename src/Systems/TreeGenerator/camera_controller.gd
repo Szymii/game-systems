@@ -1,11 +1,9 @@
 extends Camera2D
 
-
 var is_dragging := false
 var drag_start_position := Vector2.ZERO
 var drag_start_camera_position := Vector2.ZERO
 var move_speed := 500.0
-
 
 func _ready() -> void:
 	#set_camera_limits()

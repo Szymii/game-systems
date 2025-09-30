@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bx8y4ce3rc6a4n"]
+[gd_scene load_steps=4 format=3 uid="uid://u2hkbyu45q6"]
 
-[ext_resource type="Script" path="res://src/Systems/TreeGenerator/Point/starting_point.gd" id="1_startingpoint"]
+[ext_resource type="Script" uid="uid://ckhvdgne3gjkl" path="res://src/Systems/TreeGenerator/Point/starting_point.gd" id="1_startingpoint"]
 [ext_resource type="Texture2D" uid="uid://cfi6vbxx1owa1" path="res://assets/tree/point_textures/selection_ring.svg" id="2_selection_ring"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_starting"]
 resource_local_to_scene = true
 
 [node name="StartingPoint" type="Node2D" groups=["GraphPoint", "StartingPoint"]]
+z_index = 1
 script = ExtResource("1_startingpoint")
 
 [node name="SelectionRing" type="Sprite2D" parent="."]
