@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_starting"]
 resource_local_to_scene = true
 
-[node name="StartingPoint" type="Node2D"]
+[node name="StartingPoint" type="Node2D" groups=["GraphPoint", "GraphStartingPoint"]]
 z_index = 1
 script = ExtResource("1_startingpoint")
 
