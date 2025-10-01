@@ -2,17 +2,16 @@
 class_name GridManager
 extends Node2D
 
-var cell_size: float = 60.0
-@export var point_scene: PackedScene
-@export var grid_width: int = 10:
+var cell_size: float = 30.0
+@export var grid_width: int = 128:
 	set(value):
 		grid_width = max(7, value)
 		queue_redraw()
-@export var grid_height: int = 10:
+@export var grid_height: int = 128:
 	set(value):
 		grid_height = max(7, value)
 		queue_redraw()
-@export var gap_size: int = 4:
+@export var gap_size: int = 10:
 	set(value):
 		gap_size = value
 		queue_redraw()
@@ -74,9 +73,10 @@ func _draw() -> void:
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interaction"):
 		var mouse_pos := get_global_mouse_position()
-		_try_spawn_point(mouse_pos)
+		_try_request_spawn_point(mouse_pos)
 
-func _snap_to_nearest_grid_intersection(pos: Vector2) -> Vector2:
+## Public utility function - snap position to grid intersection
+func snap_to_nearest_grid_intersection(pos: Vector2) -> Vector2:
 	var offset := _get_grid_offset()
 	var grid_x: float = round((pos.x - offset.x) / cell_size) * cell_size + offset.x
 	var grid_y: float = round((pos.y - offset.y) / cell_size) * cell_size + offset.y
@@ -98,16 +98,20 @@ func _is_position_occupied(grid_pos: Vector2) -> bool:
 			return true
 	return false
 
-func _try_spawn_point(pos: Vector2) -> void:
-	var grid_pos := _snap_to_nearest_grid_intersection(pos)
-	var is_valid := (
-		grid_pos.x >= _get_grid_offset().x and
-		grid_pos.x <= _get_grid_offset().x + grid_width * cell_size and
-		grid_pos.y >= _get_grid_offset().y and
-		grid_pos.y <= _get_grid_offset().y + grid_height * cell_size
+func _is_valid_spawn_position(pos: Vector2) -> bool:
+	var grid_pos := snap_to_nearest_grid_intersection(pos)
+	var offset := _get_grid_offset()
+	
+	var is_within_bounds := (
+		grid_pos.x >= offset.x and
+		grid_pos.x <= offset.x + grid_width * cell_size and
+		grid_pos.y >= offset.y and
+		grid_pos.y <= offset.y + grid_height * cell_size
 	)
 	
-	if is_valid and not _is_in_center_gap(grid_pos) and not _is_position_occupied(grid_pos):
-		var point := point_scene.instantiate() as Node2D
-		point.global_position = grid_pos
-		add_child(point)
+	return is_within_bounds and not _is_in_center_gap(grid_pos) and not _is_position_occupied(grid_pos)
+
+func _try_request_spawn_point(pos: Vector2) -> void:
+	var grid_pos := snap_to_nearest_grid_intersection(pos)
+	if _is_valid_spawn_position(pos):
+		TreeGeneratorGlobals.request_spawn_point(grid_pos)

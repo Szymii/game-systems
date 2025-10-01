@@ -33,6 +33,8 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		TreeGeneratorGlobals.add_starting_point_signal.connect(_starting_point_added)
 		TreeGeneratorGlobals.remove_starting_point_signal.connect(_starting_point_removed)
+		# Emit initial positions after setup
+		call_deferred("_emit_positions_changed")
 
 func _starting_point_added() -> void:
 	n_sides += 2
@@ -52,13 +54,10 @@ func get_starting_positions() -> Array[Vector2]:
 	
 	return positions
 
-## Signal emitted when starting point positions change
-signal starting_positions_changed(positions: Array[Vector2])
-
 func _emit_positions_changed() -> void:
 	if not Engine.is_editor_hint():
 		var positions := get_starting_positions()
-		starting_positions_changed.emit(positions)
+		TreeGeneratorGlobals.notify_starting_positions_changed(positions)
 
 func on_tree_save(saved_data: SavedData) -> void:
 	var tree_center_data := TreeCenterSavedData.new()
