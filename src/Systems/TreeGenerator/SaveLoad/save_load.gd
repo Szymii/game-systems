@@ -11,4 +11,5 @@ func _save_tree() -> void:
 
 func _load_tree() -> void:
 	var saved_data := load("user://saved_tree_template.tres") as SavedData
-	get_tree().call_group("SavableTreeElements", "on_tree_load", saved_data)
+	if saved_data:
+		get_tree().call_group("SavableTreeElements", "on_tree_load", saved_data)

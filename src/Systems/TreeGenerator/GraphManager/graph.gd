@@ -52,11 +52,18 @@ func get_connections(point: Point) -> Array[Point]:
 	var connected_points: Array[Point] = []
 	var point_connections: Array = connections[point_id]
 	for connected_id: int in point_connections:
-		var connected_point: Point = _find_point_by_id(connected_id)
+		var connected_point: Point = find_point_by_id(connected_id)
 		if connected_point:
 			connected_points.append(connected_point)
 	
 	return connected_points
+
+func find_point_by_id(point_id: int) -> Point:
+	for point in points:
+		if point.get_id() == point_id:
+			return point
+	return null
+
 
 func _remove_connection_by_id(id_a: int, id_b: int) -> bool:
 	if id_a not in connections or id_b not in connections:
@@ -90,9 +97,3 @@ func _can_connect(point_a: Point, point_b: Point) -> bool:
 	var id_b: int = point_b.get_id()
 	
 	return id_a in connections and id_b in connections
-
-func _find_point_by_id(point_id: int) -> Point:
-	for point in points:
-		if point.get_id() == point_id:
-			return point
-	return null
