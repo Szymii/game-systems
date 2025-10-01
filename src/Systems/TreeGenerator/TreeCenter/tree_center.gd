@@ -72,23 +72,25 @@ func _clear_starting_points() -> void:
 	starting_points.clear()
 
 func on_tree_save(saved_data: SavedData) -> void:
+	pass
 	var tree_center_data := TreeCenterSavedData.new()
 	tree_center_data.n_sides = n_sides
 	tree_center_data.radius = radius
 	
 	for starting_point in starting_points:
-		if is_instance_valid(starting_point):
-			var point_data := PointSavedData.new()
-			point_data.point_id = starting_point.get_id()
-			point_data.position = starting_point.global_position
-			point_data.texture_path = starting_point.get_texture_data().path
-			point_data.texture_name = starting_point.get_texture_data().texture_name
-			point_data.size = starting_point.get_point_size()
-			point_data.stat = starting_point.get_stat()
-			point_data.stat_mode = starting_point.get_stat_mode()
-			point_data.value = starting_point.get_value()
-			tree_center_data.starting_points.append(point_data)
-	
+		var point_data := PointSavedData.new()
+
+		point_data.scene_path = starting_point.scene_file_path
+		point_data.point_id = starting_point.get_id()
+		point_data.position = starting_point.global_position
+		point_data.texture_path = starting_point.get_texture_data().path
+		point_data.texture_name = starting_point.get_texture_data().texture_name
+		point_data.size = starting_point.get_point_size()
+		point_data.stat = starting_point.get_stat()
+		point_data.stat_mode = starting_point.get_stat_mode()
+		point_data.value = starting_point.get_value()
+		
+		tree_center_data.starting_points.append(point_data)
 	saved_data.tree_center = tree_center_data
 
 func on_tree_load(saved_data: SavedData) -> void:
@@ -106,7 +108,6 @@ func on_tree_load(saved_data: SavedData) -> void:
 		var starting_point: StartingPoint = starting_point_scene.instantiate()
 		starting_point.global_position = point_data.position
 		
-		# Odtwórz PointTextureData z zapisanych danych
 		var texture_data := PointTextureData.new(point_data.texture_path, point_data.texture_name)
 		add_child(starting_point)
 

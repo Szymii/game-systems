@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_thmsi"]
 resource_local_to_scene = true
 
-[node name="Point" type="Node2D" groups=["GraphPoint", "SavableTreeElements"]]
+[node name="Point" type="Node2D" groups=["GraphPoint"]]
 z_index = 1
 script = ExtResource("1_xjywp")
 

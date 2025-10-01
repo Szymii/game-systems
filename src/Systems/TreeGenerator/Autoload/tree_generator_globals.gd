@@ -35,17 +35,17 @@ func deselect_point() -> void:
 	selected_point = null
 	point_deselected_signal.emit()
 
-func register_point_in_graph(point: Point) ->void:
+func register_point_in_graph(point: Point) -> void:
 	register_point_in_graph_signal.emit(point)
 
-func deregister_point_from_graph(point: Point) ->void:
+func deregister_point_from_graph(point: Point) -> void:
 	deregister_point_from_graph_signal.emit(point)
 
-func connect_points(point_a: Point, point_b: Point) ->void:
-	connect_points_signal.emit(point_a,point_b)
+func connect_points(point_a: Point, point_b: Point) -> void:
+	connect_points_signal.emit(point_a, point_b)
 
-func remove_connection(point_a: Point, point_b: Point) ->void:
-	remove_connection_signal.emit(point_a,point_b)
+func remove_connection(point_a: Point, point_b: Point) -> void:
+	remove_connection_signal.emit(point_a, point_b)
 
 func get_selected_point() -> Point:
 	return selected_point

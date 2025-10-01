@@ -78,9 +78,11 @@ func set_stat(new_stat: Stat.STAT) -> void:
 func set_stat_mode(new_stat_mode: StatMode.STAT_MODE) -> void:
 	stat_mode = new_stat_mode
 
-
 func set_value(new_value: int) -> void:
 	value = new_value
+
+func set_id(new_id: int) -> void:
+	point_id = new_id
 
 func get_texture_data() -> PointTextureData:
 	return texture_data
@@ -116,6 +118,3 @@ func _on_point_selected(point: Point) -> void:
 func _is_mouse_over_point(mouse_pos: Vector2) -> bool:
 	var distance: float = global_position.distance_to(mouse_pos)
 	return distance <= get_collision_radius()
-
-func on_tree_save(saved_data: SavedData) -> void:
-	pass
