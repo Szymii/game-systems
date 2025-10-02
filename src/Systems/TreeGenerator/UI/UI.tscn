@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bhrackjlny31i"]
+[gd_scene load_steps=12 format=3 uid="uid://bhrackjlny31i"]
 
 [ext_resource type="Script" uid="uid://cqkav6ccqnrmh" path="res://src/Systems/TreeGenerator/UI/add_btn.gd" id="1_7eean"]
 [ext_resource type="Script" uid="uid://ikf4wgpwn5si" path="res://src/Systems/TreeGenerator/UI/foldable_container.gd" id="1_wur1o"]
@@ -9,9 +9,7 @@
 [ext_resource type="Script" uid="uid://bdtn4j7cx5ir8" path="res://src/Systems/TreeGenerator/UI/size_select.gd" id="4_r6hkt"]
 [ext_resource type="Script" uid="uid://drv1qote4rgxl" path="res://src/Systems/TreeGenerator/UI/texture_select.gd" id="6_et6xy"]
 [ext_resource type="Script" uid="uid://bb73w5o4n5v3j" path="res://src/Common/point_textures.gd" id="7_tlnj7"]
-[ext_resource type="Script" uid="uid://cwanq5vdt0l5e" path="res://src/Systems/TreeGenerator/UI/stat_select.gd" id="8_0qobm"]
-[ext_resource type="Script" uid="uid://ci11wencjo2g8" path="res://src/Systems/TreeGenerator/UI/stat_mode_select.gd" id="9_nf0g0"]
-[ext_resource type="Script" uid="uid://clljo11sytfjt" path="res://src/Systems/TreeGenerator/UI/text_edit.gd" id="10_m0k41"]
+[ext_resource type="Script" uid="uid://bcokvvkumfqco" path="res://src/Systems/TreeGenerator/UI/stats_list.gd" id="11_stats"]
 
 [sub_resource type="Resource" id="Resource_vq4fo"]
 script = ExtResource("7_tlnj7")
@@ -113,34 +111,25 @@ layout_mode = 2
 script = ExtResource("6_et6xy")
 texture_res = SubResource("Resource_vq4fo")
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
 layout_mode = 2
-text = "Stat"
 
-[node name="StatSelect" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+[node name="StatsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
 layout_mode = 2
-script = ExtResource("8_0qobm")
+text = "Stats"
 
-[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+[node name="StatsList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
 layout_mode = 2
-text = "Stat mode"
+script = ExtResource("11_stats")
 
-[node name="StatModeSelect" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+[node name="StatsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox/StatsList"]
+unique_name_in_owner = true
 layout_mode = 2
-script = ExtResource("9_nf0g0")
 
-[node name="Label5" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+[node name="AddStatButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox/StatsList"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Value"
-
-[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
-clip_contents = false
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-text = "0"
-context_menu_enabled = false
-emoji_menu_enabled = false
-script = ExtResource("10_m0k41")
+text = "+ Add Stat"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TopBar/Add" to="MarginContainer/VBoxContainer/TopBar/Add" method="_on_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TopBar/Remove" to="MarginContainer/VBoxContainer/TopBar/Remove" method="_on_pressed"]

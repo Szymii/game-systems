@@ -7,6 +7,9 @@ extends Resource
 @export var texture_path: String
 @export var texture_name: String
 @export var size: PointSize.POINT_SIZE = PointSize.POINT_SIZE.SM
+@export var stats: Array[PointStat] = []
+
+# Legacy fields for backward compatibility (will be migrated to stats array)
 @export var stat: Stat.STAT = Stat.STAT.DEX
 @export var stat_mode: StatMode.STAT_MODE = StatMode.STAT_MODE.FLAT
-@export var value: int
+@export var value: int = 0

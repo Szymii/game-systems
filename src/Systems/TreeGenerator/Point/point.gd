@@ -11,9 +11,7 @@ var is_selected: bool = false
 var point_id: int
 var texture_data: PointTextureData = PointTextureData.new("res://assets/tree/point_textures/empty.svg", "Empty")
 var size: PointSize.POINT_SIZE = PointSize.POINT_SIZE.SM
-var stat: Stat.STAT = Stat.STAT.DEX
-var stat_mode: StatMode.STAT_MODE = StatMode.STAT_MODE.FLAT
-var value: int = 0
+var stats: Array[PointStat] = []
 
 func _ready() -> void:
 	point_id = self.get_instance_id()
@@ -71,15 +69,26 @@ func set_point_texture(_texture_data: PointTextureData) -> void:
 	if _texture_data and sprite:
 		sprite.texture = _texture_data.texture
 		texture_data = _texture_data
-		
-func set_stat(new_stat: Stat.STAT) -> void:
-	stat = new_stat
 
-func set_stat_mode(new_stat_mode: StatMode.STAT_MODE) -> void:
-	stat_mode = new_stat_mode
+func add_stat(new_stat: PointStat) -> void:
+	stats.append(new_stat)
 
-func set_value(new_value: int) -> void:
-	value = new_value
+func remove_stat(index: int) -> void:
+	if index >= 0 and index < stats.size():
+		stats.remove_at(index)
+
+func update_stat(index: int, new_stat: PointStat) -> void:
+	if index >= 0 and index < stats.size():
+		stats[index] = new_stat
+
+func get_stats() -> Array[PointStat]:
+	return stats
+
+func set_stats(new_stats: Array[PointStat]) -> void:
+	stats = new_stats
+
+func clear_stats() -> void:
+	stats.clear()
 
 func set_id(new_id: int) -> void:
 	point_id = new_id
@@ -93,15 +102,6 @@ func get_collision_radius() -> float:
 
 func get_point_size() -> PointSize.POINT_SIZE:
 	return size
-
-func get_stat() -> Stat.STAT:
-	return stat
-
-func get_stat_mode() -> StatMode.STAT_MODE:
-	return stat_mode
-
-func get_value() -> int:
-	return value
 
 func get_id() -> int:
 	return point_id

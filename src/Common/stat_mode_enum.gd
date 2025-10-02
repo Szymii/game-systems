@@ -1,3 +1,3 @@
 class_name StatMode
 
-enum STAT_MODE {FLAT = 1, PROCENT_INCREASE}
+enum STAT_MODE {FLAT = 1, PROCENT_INC}
