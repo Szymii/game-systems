@@ -9,9 +9,8 @@ func _ready() -> void:
 	#set_camera_limits()
 	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_zoom()
-	movement(delta)
 	clickAndDrag()
 
 func _zoom() -> void:
@@ -24,25 +23,6 @@ func _zoom() -> void:
 	# Clamp zoom to prevent extreme values
 	zoom = clamp(zoom, Vector2(0.5, 0.5), Vector2(2.0, 2.0))
 	
-
-func movement(delta: float) -> void:
-	var move_direction := Vector2.ZERO
-	
-	if Input.is_action_pressed("camera_move_up"):
-		move_direction.y -= 1
-	if Input.is_action_pressed("camera_move_down"):
-		move_direction.y += 1
-	if Input.is_action_pressed("camera_move_left"):
-		move_direction.x -= 1
-	if Input.is_action_pressed("camera_move_right"):
-		move_direction.x += 1
-	
-	# Normalize to prevent faster diagonal movement
-	if move_direction.length() > 0:
-		move_direction = move_direction.normalized()
-	
-	var adjusted_speed := move_speed / zoom.x
-	position += move_direction * adjusted_speed * delta
 
 func clickAndDrag() -> void:
 	if Input.is_action_just_pressed("camera_drag"):

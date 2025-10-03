@@ -3,6 +3,7 @@ extends Resource
 
 @export var scene_path: String
 @export var point_id: int
+@export var point_name: String = ""
 @export var position: Vector2
 @export var texture_path: String
 @export var texture_name: String

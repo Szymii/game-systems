@@ -11,6 +11,7 @@ var is_selected: bool = false
 var is_multi_selected: bool = false
 
 var point_id: int
+var point_name: String = ""
 var texture_data: PointTextureData = PointTextureData.new("res://assets/tree/point_textures/empty.svg", "Empty")
 var size: PointSize.POINT_SIZE = PointSize.POINT_SIZE.SM
 
@@ -109,6 +110,12 @@ func clear_stats() -> void:
 
 func set_id(new_id: int) -> void:
 	point_id = new_id
+
+func set_point_name(new_name: String) -> void:
+	point_name = new_name
+
+func get_point_name() -> String:
+	return point_name
 
 func get_texture_data() -> PointTextureData:
 	return texture_data

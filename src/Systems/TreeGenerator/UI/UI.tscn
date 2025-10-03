@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhrackjlny31i"]
+[gd_scene load_steps=13 format=3 uid="uid://bhrackjlny31i"]
 
 [ext_resource type="Script" uid="uid://cqkav6ccqnrmh" path="res://src/Systems/TreeGenerator/UI/add_btn.gd" id="1_7eean"]
 [ext_resource type="Script" uid="uid://ikf4wgpwn5si" path="res://src/Systems/TreeGenerator/UI/foldable_container.gd" id="1_wur1o"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://j676bpuiow8s" path="res://src/Systems/TreeGenerator/UI/properties_form.gd" id="4_6pu4w"]
 [ext_resource type="Script" uid="uid://bdtn4j7cx5ir8" path="res://src/Systems/TreeGenerator/UI/size_select.gd" id="4_r6hkt"]
 [ext_resource type="Script" uid="uid://drv1qote4rgxl" path="res://src/Systems/TreeGenerator/UI/texture_select.gd" id="6_et6xy"]
+[ext_resource type="Script" uid="uid://bdnw1cnlohbvi" path="res://src/Systems/TreeGenerator/UI/point_name_input.gd" id="7_nf0g0"]
 [ext_resource type="Script" uid="uid://bb73w5o4n5v3j" path="res://src/Common/point_textures.gd" id="7_tlnj7"]
 [ext_resource type="Script" uid="uid://bcokvvkumfqco" path="res://src/Systems/TreeGenerator/UI/stats_list.gd" id="11_stats"]
 
@@ -78,12 +79,10 @@ mouse_filter = 1
 [node name="FoldableRight" type="FoldableContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-folded = true
 title = "Properties"
 script = ExtResource("1_wur1o")
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 8
@@ -94,7 +93,16 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 script = ExtResource("4_6pu4w")
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+layout_mode = 2
+text = "Name"
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+script = ExtResource("7_nf0g0")
+
+[node name="SizeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
 layout_mode = 2
 text = "Size"
 
@@ -102,7 +110,7 @@ text = "Size"
 layout_mode = 2
 script = ExtResource("4_r6hkt")
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+[node name="TextureLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
 layout_mode = 2
 text = "Texture"
 
