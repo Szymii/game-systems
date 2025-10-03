@@ -9,6 +9,9 @@ func _ready() -> void:
 	default_color = Color(1.0, 1.0, 1.0, 0.7)
 	add_to_group("ConnectionLine")
 
+func _process(_delta: float) -> void:
+	_update_line_positions()
+
 func setup(from_point: Point, to_point: Point) -> void:
 	point_a = from_point
 	point_b = to_point

@@ -33,6 +33,9 @@ func _get_center_gap_bounds() -> Dictionary[String, float]:
 		"bottom": center_y + gap_size / 2.0
 	}
 
+func _ready() -> void:
+	add_to_group("GridManager")
+
 func _draw() -> void:
 	const line_color := Color(0.173, 0.173, 0.173, 0.6)
 	var gap_bounds := _get_center_gap_bounds()
@@ -71,6 +74,9 @@ func _draw() -> void:
 			draw_line(start, end, line_color, 1.0, true)
 
 func _unhandled_input(_event: InputEvent) -> void:
+	if TreeGeneratorGlobals.is_dragging_point:
+		return
+	
 	if Input.is_action_just_pressed("interaction"):
 		var mouse_pos := get_global_mouse_position()
 		_try_request_spawn_point(mouse_pos)
