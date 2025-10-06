@@ -79,10 +79,12 @@ mouse_filter = 1
 [node name="FoldableRight" type="FoldableContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+folded = true
 title = "Properties"
 script = ExtResource("1_wur1o")
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 8
