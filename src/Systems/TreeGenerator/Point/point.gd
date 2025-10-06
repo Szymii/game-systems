@@ -7,6 +7,7 @@ extends Node2D
 
 const TEXTURE_DEFAULT_SIZE := 64.0
 
+var is_starting_point: bool = false
 var is_selected: bool = false
 var is_multi_selected: bool = false
 
@@ -113,6 +114,9 @@ func set_id(new_id: int) -> void:
 
 func set_point_name(new_name: String) -> void:
 	point_name = new_name
+
+func set_is_starting_point() -> void:
+	is_starting_point = true
 
 func get_point_name() -> String:
 	return point_name

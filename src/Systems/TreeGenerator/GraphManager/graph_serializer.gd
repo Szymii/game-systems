@@ -17,6 +17,7 @@ func _serialize_points(saved_data: SavedData, scene_tree: SceneTree) -> void:
 	for point in points as Array[Point]:
 		var point_saved_data := PointSavedData.new()
 		
+		point_saved_data.is_starting_point = point.is_starting_point
 		point_saved_data.scene_path = point.scene_file_path
 		point_saved_data.point_id = point.get_id()
 		point_saved_data.point_name = point.get_point_name()

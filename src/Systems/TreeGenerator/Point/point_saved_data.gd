@@ -1,6 +1,7 @@
 class_name PointSavedData
 extends Resource
 
+@export var is_starting_point: bool = false
 @export var scene_path: String
 @export var point_id: int
 @export var point_name: String = ""

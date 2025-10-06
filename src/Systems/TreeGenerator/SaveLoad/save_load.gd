@@ -8,10 +8,10 @@ func _save_tree() -> void:
 	var saved_data := SavedData.new()
 	saved_data.version = SavedData.CURRENT_VERSION
 	get_tree().call_group("SavableTreeElements", "on_tree_save", saved_data)
-	ResourceSaver.save(saved_data, "user://saved_tree_template.tres")
+	ResourceSaver.save(saved_data, "res://src/Systems/TreeGenerator/saved_tree_template.tres")
 
 func _load_tree() -> void:
-	var saved_data := load("user://saved_tree_template.tres") as SavedData
+	var saved_data := load("res://src/Systems/TreeGenerator/saved_tree_template.tres") as SavedData
 	if saved_data:
 		# Check version and handle migrations if needed
 		_check_version_and_migrate(saved_data)
