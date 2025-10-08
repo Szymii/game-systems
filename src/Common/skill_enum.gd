@@ -5,4 +5,8 @@ enum SKILL {
 	DASH = 2,
 	TELEPORT = 3,
 	JUMP = 4,
+  ChaosAura = 5,
+  RainOfFire = 6,
+  BleedingDaggers = 7,
+  AxeWind = 8,
 }
