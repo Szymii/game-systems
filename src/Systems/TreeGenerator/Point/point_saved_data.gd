@@ -11,6 +11,7 @@ extends Resource
 @export var size: PointSize.POINT_SIZE = PointSize.POINT_SIZE.SM
 @export var stats: Array[PointStat] = []
 @export var rules: Array[PointRule] = []
+@export var skills: Array[PointSkill] = []
 
 # Legacy fields for backward compatibility (will be migrated to stats array)
 @export var stat: Stat.STAT = Stat.STAT.DEX

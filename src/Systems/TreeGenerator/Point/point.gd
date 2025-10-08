@@ -19,12 +19,14 @@ var size: PointSize.POINT_SIZE = PointSize.POINT_SIZE.SM
 var drag_handler: PointDragHandler
 var stats_manager: PointStatsManager
 var rules_manager: PointRulesManager
+var skills_manager: PointSkillsManager
 
 func _ready() -> void:
 	point_id = self.get_instance_id()
 	drag_handler = PointDragHandler.new(self)
 	stats_manager = PointStatsManager.new()
 	rules_manager = PointRulesManager.new()
+	skills_manager = PointSkillsManager.new()
 	
 	set_point_size(size)
 	set_point_texture(texture_data)
@@ -128,6 +130,24 @@ func set_rules(new_rules: Array[PointRule]) -> void:
 
 func clear_rules() -> void:
 	rules_manager.clear_rules()
+
+func add_skill(new_skill: PointSkill) -> void:
+	skills_manager.add_skill(new_skill)
+
+func remove_skill(index: int) -> void:
+	skills_manager.remove_skill(index)
+
+func update_skill(index: int, new_skill: PointSkill) -> void:
+	skills_manager.update_skill(index, new_skill)
+
+func get_skills() -> Array[PointSkill]:
+	return skills_manager.get_skills()
+
+func set_skills(new_skills: Array[PointSkill]) -> void:
+	skills_manager.set_skills(new_skills)
+
+func clear_skills() -> void:
+	skills_manager.clear_skills()
 
 func set_id(new_id: int) -> void:
 	point_id = new_id

@@ -9,6 +9,3 @@ func _init(_stat: Stat.STAT = Stat.STAT.DEX, _stat_mode: StatMode.STAT_MODE = St
 	stat = _stat
 	stat_mode = _stat_mode
 	value = _value
-
-func duplicate_stat() -> PointStat:
-	return PointStat.new(stat, stat_mode, value)

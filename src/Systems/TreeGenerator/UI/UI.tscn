@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bhrackjlny31i"]
+[gd_scene load_steps=15 format=3 uid="uid://bhrackjlny31i"]
 
 [ext_resource type="Script" uid="uid://cqkav6ccqnrmh" path="res://src/Systems/TreeGenerator/UI/add_btn.gd" id="1_7eean"]
 [ext_resource type="Script" uid="uid://ikf4wgpwn5si" path="res://src/Systems/TreeGenerator/UI/foldable_container.gd" id="1_wur1o"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://bb73w5o4n5v3j" path="res://src/Common/point_textures.gd" id="7_tlnj7"]
 [ext_resource type="Script" uid="uid://bcokvvkumfqco" path="res://src/Systems/TreeGenerator/UI/stats_list.gd" id="11_stats"]
 [ext_resource type="Script" uid="uid://c7rk8p3n4xm2v" path="res://src/Systems/TreeGenerator/UI/rules_list.gd" id="12_rules"]
+[ext_resource type="Script" uid="uid://e6a10sx31vd4" path="res://src/Systems/TreeGenerator/UI/skills_list.gd" id="13_skills"]
 
 [sub_resource type="Resource" id="Resource_vq4fo"]
 script = ExtResource("7_tlnj7")
@@ -80,87 +81,110 @@ mouse_filter = 1
 [node name="FoldableRight" type="FoldableContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-folded = true
 title = "Properties"
 script = ExtResource("1_wur1o")
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_bottom = 24
 
-[node name="VBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2"]
 layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 script = ExtResource("4_6pu4w")
 
-[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox"]
 layout_mode = 2
 text = "Name"
 
-[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 script = ExtResource("7_nf0g0")
 
-[node name="SizeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+[node name="SizeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox"]
 layout_mode = 2
 text = "Size"
 
-[node name="SizeSelect" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+[node name="SizeSelect" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox"]
 layout_mode = 2
 script = ExtResource("4_r6hkt")
 
-[node name="TextureLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+[node name="TextureLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox"]
 layout_mode = 2
 text = "Texture"
 
-[node name="TextureSelect" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+[node name="TextureSelect" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox"]
 layout_mode = 2
 script = ExtResource("6_et6xy")
 texture_res = SubResource("Resource_vq4fo")
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox"]
 layout_mode = 2
 
-[node name="StatsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+[node name="StatsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox"]
 layout_mode = 2
 text = "Stats"
 
-[node name="StatsList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+[node name="StatsList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox"]
 layout_mode = 2
 script = ExtResource("11_stats")
 
-[node name="StatsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox/StatsList"]
+[node name="StatsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox/StatsList"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AddStatButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox/StatsList"]
+[node name="AddStatButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox/StatsList"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "+ Add Stat"
 
-[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox"]
 layout_mode = 2
 
-[node name="RulesLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+[node name="RulesLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox"]
 layout_mode = 2
 text = "Rules"
 
-[node name="RulesList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox"]
+[node name="RulesList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox"]
 layout_mode = 2
 script = ExtResource("12_rules")
 
-[node name="RulesContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox/RulesList"]
+[node name="RulesContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox/RulesList"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AddRuleButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/VBox/RulesList"]
+[node name="AddRuleButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox/RulesList"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "+ Add Rule"
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox"]
+layout_mode = 2
+
+[node name="SkillsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox"]
+layout_mode = 2
+text = "Skills"
+
+[node name="SkillsList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox"]
+layout_mode = 2
+script = ExtResource("13_skills")
+
+[node name="SkillsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox/SkillsList"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AddSkillButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/FoldableRight/MarginContainer2/ScrollContainer/VBox/SkillsList"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+ Add Skill"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TopBar/Add" to="MarginContainer/VBoxContainer/TopBar/Add" method="_on_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TopBar/Remove" to="MarginContainer/VBoxContainer/TopBar/Remove" method="_on_pressed"]
