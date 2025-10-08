@@ -18,11 +18,13 @@ var size: PointSize.POINT_SIZE = PointSize.POINT_SIZE.SM
 
 var drag_handler: PointDragHandler
 var stats_manager: PointStatsManager
+var rules_manager: PointRulesManager
 
 func _ready() -> void:
 	point_id = self.get_instance_id()
 	drag_handler = PointDragHandler.new(self)
 	stats_manager = PointStatsManager.new()
+	rules_manager = PointRulesManager.new()
 	
 	set_point_size(size)
 	set_point_texture(texture_data)
@@ -108,6 +110,24 @@ func set_stats(new_stats: Array[PointStat]) -> void:
 
 func clear_stats() -> void:
 	stats_manager.clear_stats()
+
+func add_rule(new_rule: PointRule) -> void:
+	rules_manager.add_rule(new_rule)
+
+func remove_rule(index: int) -> void:
+	rules_manager.remove_rule(index)
+
+func update_rule(index: int, new_rule: PointRule) -> void:
+	rules_manager.update_rule(index, new_rule)
+
+func get_rules() -> Array[PointRule]:
+	return rules_manager.get_rules()
+
+func set_rules(new_rules: Array[PointRule]) -> void:
+	rules_manager.set_rules(new_rules)
+
+func clear_rules() -> void:
+	rules_manager.clear_rules()
 
 func set_id(new_id: int) -> void:
 	point_id = new_id

@@ -26,6 +26,7 @@ func _serialize_points(saved_data: SavedData, scene_tree: SceneTree) -> void:
 		point_saved_data.texture_name = point.get_texture_data().texture_name
 		point_saved_data.size = point.get_point_size()
 		point_saved_data.stats = point.get_stats().duplicate()
+		point_saved_data.rules = point.get_rules().duplicate()
 		
 		saved_data.points.append(point_saved_data)
 
@@ -53,6 +54,7 @@ func _deserialize_points(saved_data: SavedData, graph_layer: Node2D, graph: Grap
 		point.set_point_texture(PointTextureData.new(point_data.texture_path, point_data.texture_name))
 		point.set_point_size(point_data.size)
 		point.set_stats(point_data.stats.duplicate())
+		point.set_rules(point_data.rules.duplicate())
 		
 		graph.add_point(point)
 
