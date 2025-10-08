@@ -1,0 +1,12 @@
+class_name StatCondition
+
+enum CONDITION {
+	NONE = 0,
+	WITH_SHIELD = 1,
+	WITH_1_HAND_WEAPON = 2,
+	WITH_AXE = 3,
+	WITH_2_HAND_WEAPON = 4,
+	WITH_STAFF = 5,
+	WITH_DAGGER = 6,
+	WITH_BOOK = 7,
+}
