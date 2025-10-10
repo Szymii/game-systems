@@ -1,0 +1,35 @@
+extends MarginContainer
+
+@onready var Name: LineEdit = %Name
+@onready var CreateBtn: Button = %CreateBtn
+
+var _selected_class: Node = null
+var _character_name: String = ""
+
+func _ready() -> void:
+	_connect_selectable_classes()
+	_connect_ui_elements()
+
+func _connect_selectable_classes() -> void:
+	var hbox := %HSelectableContainer
+	for child in hbox.get_children():
+		if child.has_signal("class_selected"):
+			child.connect("class_selected", _on_class_selected)
+
+func _connect_ui_elements() -> void:
+	Name.text_changed.connect(_on_name_changed)
+	CreateBtn.pressed.connect(_on_create_btn_pressed)
+
+func _on_class_selected(selectable_class: Node) -> void:
+	if _selected_class != null and _selected_class.has_method("set_selected"):
+		_selected_class.call("set_selected", false)
+	
+	_selected_class = selectable_class
+	if _selected_class.has_method("set_selected"):
+		_selected_class.call("set_selected", true)
+
+func _on_name_changed(new_text: String) -> void:
+	_character_name = new_text
+
+func _on_create_btn_pressed() -> void:
+	pass

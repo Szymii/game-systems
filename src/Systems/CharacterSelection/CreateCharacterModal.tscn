@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1y0kmx850qbq"]
+
+[ext_resource type="Script" uid="uid://cg8w3gc7nm10a" path="res://src/Systems/CharacterSelection/create_character_modal.gd" id="1_glssg"]
+[ext_resource type="PackedScene" uid="uid://rdbq5x5yfwjo" path="res://src/Systems/CharacterSelection/SelectableClass.tscn" id="1_sv4ig"]
+[ext_resource type="Resource" uid="uid://tv1xksn3y1kk" path="res://src/Common/CharacterClass/sorcerer_class.tres" id="2_qr8l2"]
+[ext_resource type="Resource" uid="uid://d17h86q5x4qgh" path="res://src/Common/CharacterClass/cleric_class.tres" id="3_glssg"]
+[ext_resource type="Resource" uid="uid://b05pgkthky1yg" path="res://src/Common/CharacterClass/rogue_class.tres" id="4_1k8pn"]
+[ext_resource type="Resource" uid="uid://bx4fmppwa63bq" path="res://src/Common/CharacterClass/knight_class.tres" id="5_voulb"]
+
+[node name="CreateCharacterModal" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 128
+script = ExtResource("1_glssg")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HSelectableContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="SelectableClass" parent="Panel/MarginContainer/VBoxContainer/HSelectableContainer" instance=ExtResource("1_sv4ig")]
+layout_mode = 2
+CharacterClassRes = ExtResource("2_qr8l2")
+
+[node name="SelectableClass2" parent="Panel/MarginContainer/VBoxContainer/HSelectableContainer" instance=ExtResource("1_sv4ig")]
+layout_mode = 2
+CharacterClassRes = ExtResource("3_glssg")
+
+[node name="SelectableClass3" parent="Panel/MarginContainer/VBoxContainer/HSelectableContainer" instance=ExtResource("1_sv4ig")]
+layout_mode = 2
+CharacterClassRes = ExtResource("4_1k8pn")
+
+[node name="SelectableClass4" parent="Panel/MarginContainer/VBoxContainer/HSelectableContainer" instance=ExtResource("1_sv4ig")]
+layout_mode = 2
+CharacterClassRes = ExtResource("5_voulb")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Character Name"
+
+[node name="Name" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+max_length = 128
+emoji_menu_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="VSeparator" type="VSeparator" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CreateBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "Create"

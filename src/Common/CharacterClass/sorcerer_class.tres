@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterClass" load_steps=4 format=3 uid="uid://tv1xksn3y1kk"]
+
+[ext_resource type="Script" uid="uid://lmkaeie7ucx0" path="res://src/Common/CharacterClass/character_class_res.gd" id="1_8b44a"]
+[ext_resource type="Texture2D" uid="uid://bara771v87j27" path="res://assets/UI/Sorcerer_art.png" id="1_u0nf2"]
+[ext_resource type="Texture2D" uid="uid://bnmi0v84jtqfv" path="res://assets/characters/Sorcerer.png" id="2_rfq46"]
+
+[resource]
+script = ExtResource("1_8b44a")
+character_sprite = ExtResource("2_rfq46")
+character_art = ExtResource("1_u0nf2")
+metadata/_custom_type_script = "uid://lmkaeie7ucx0"

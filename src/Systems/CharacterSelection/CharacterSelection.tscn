@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://bgou1ylelqsgv"]
+[gd_scene load_steps=3 format=3 uid="uid://bgou1ylelqsgv"]
+
+[ext_resource type="Texture2D" uid="uid://ddv6ic7t2sjpn" path="res://assets/splash.png" id="1_ed428"]
+[ext_resource type="PackedScene" uid="uid://bpljgpj7qgxmq" path="res://src/Systems/CharacterSelection/EmptySlot.tscn" id="2_wywgh"]
 
 [node name="CharacterSelection" type="Control"]
 layout_mode = 3
@@ -7,3 +10,73 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ed428")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+
+[node name="EmptySlot" parent="MarginContainer/HBoxContainer/GridContainer" instance=ExtResource("2_wywgh")]
+layout_mode = 2
+
+[node name="EmptySlot2" parent="MarginContainer/HBoxContainer/GridContainer" instance=ExtResource("2_wywgh")]
+layout_mode = 2
+
+[node name="EmptySlot3" parent="MarginContainer/HBoxContainer/GridContainer" instance=ExtResource("2_wywgh")]
+layout_mode = 2
+
+[node name="EmptySlot4" parent="MarginContainer/HBoxContainer/GridContainer" instance=ExtResource("2_wywgh")]
+layout_mode = 2
+
+[node name="EmptySlot5" parent="MarginContainer/HBoxContainer/GridContainer" instance=ExtResource("2_wywgh")]
+layout_mode = 2
+
+[node name="EmptySlot6" parent="MarginContainer/HBoxContainer/GridContainer" instance=ExtResource("2_wywgh")]
+layout_mode = 2
+
+[node name="EmptySlot7" parent="MarginContainer/HBoxContainer/GridContainer" instance=ExtResource("2_wywgh")]
+layout_mode = 2
+
+[node name="EmptySlot8" parent="MarginContainer/HBoxContainer/GridContainer" instance=ExtResource("2_wywgh")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NewGame" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "New Game"
+
+[node name="JoinGame" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Join Game"
