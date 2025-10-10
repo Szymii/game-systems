@@ -1,7 +1,10 @@
 extends MarginContainer
 
+signal modal_closed()
+
 @onready var Name: LineEdit = %Name
 @onready var CreateBtn: Button = %CreateBtn
+@onready var CloseBtn: Button = %CloseBtn
 
 var _selected_class: Node = null
 var _character_name: String = ""
@@ -9,6 +12,11 @@ var _character_name: String = ""
 func _ready() -> void:
 	_connect_selectable_classes()
 	_connect_ui_elements()
+
+func _input(event: InputEvent) -> void:
+	if visible and event.is_action_pressed("ui_cancel"):
+		_close_modal()
+		get_viewport().set_input_as_handled()
 
 func _connect_selectable_classes() -> void:
 	var hbox := %HSelectableContainer
@@ -19,6 +27,7 @@ func _connect_selectable_classes() -> void:
 func _connect_ui_elements() -> void:
 	Name.text_changed.connect(_on_name_changed)
 	CreateBtn.pressed.connect(_on_create_btn_pressed)
+	CloseBtn.pressed.connect(_close_modal)
 
 func _on_class_selected(selectable_class: Node) -> void:
 	if _selected_class != null and _selected_class.has_method("set_selected"):
@@ -33,3 +42,6 @@ func _on_name_changed(new_text: String) -> void:
 
 func _on_create_btn_pressed() -> void:
 	pass
+
+func _close_modal() -> void:
+	modal_closed.emit()

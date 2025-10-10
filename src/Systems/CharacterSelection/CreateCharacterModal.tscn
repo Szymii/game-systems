@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1y0kmx850qbq"]
+[gd_scene load_steps=8 format=3 uid="uid://d1y0kmx850qbq"]
 
 [ext_resource type="Script" uid="uid://cg8w3gc7nm10a" path="res://src/Systems/CharacterSelection/create_character_modal.gd" id="1_glssg"]
 [ext_resource type="PackedScene" uid="uid://rdbq5x5yfwjo" path="res://src/Systems/CharacterSelection/SelectableClass.tscn" id="1_sv4ig"]
+[ext_resource type="StyleBox" uid="uid://56g037f61dna" path="res://src/Common/UI/ui_solid_stylebox.tres" id="2_1k8pn"]
 [ext_resource type="Resource" uid="uid://tv1xksn3y1kk" path="res://src/Common/CharacterClass/sorcerer_class.tres" id="2_qr8l2"]
 [ext_resource type="Resource" uid="uid://d17h86q5x4qgh" path="res://src/Common/CharacterClass/cleric_class.tres" id="3_glssg"]
 [ext_resource type="Resource" uid="uid://b05pgkthky1yg" path="res://src/Common/CharacterClass/rogue_class.tres" id="4_1k8pn"]
@@ -21,6 +22,7 @@ script = ExtResource("1_glssg")
 
 [node name="Panel" type="PanelContainer" parent="."]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("2_1k8pn")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 2
@@ -32,6 +34,21 @@ theme_override_constants/margin_bottom = 12
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Create Character"
+vertical_alignment = 1
+
+[node name="CloseBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "X"
 
 [node name="HSelectableContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
