@@ -58,19 +58,19 @@ theme_override_constants/separation = 4
 
 [node name="SelectableClass" parent="Panel/MarginContainer/VBoxContainer/HSelectableContainer" instance=ExtResource("1_sv4ig")]
 layout_mode = 2
-CharacterClassRes = ExtResource("2_qr8l2")
+character_class_res = ExtResource("2_qr8l2")
 
 [node name="SelectableClass2" parent="Panel/MarginContainer/VBoxContainer/HSelectableContainer" instance=ExtResource("1_sv4ig")]
 layout_mode = 2
-CharacterClassRes = ExtResource("3_glssg")
+character_class_res = ExtResource("3_glssg")
 
 [node name="SelectableClass3" parent="Panel/MarginContainer/VBoxContainer/HSelectableContainer" instance=ExtResource("1_sv4ig")]
 layout_mode = 2
-CharacterClassRes = ExtResource("4_1k8pn")
+character_class_res = ExtResource("4_1k8pn")
 
 [node name="SelectableClass4" parent="Panel/MarginContainer/VBoxContainer/HSelectableContainer" instance=ExtResource("1_sv4ig")]
 layout_mode = 2
-CharacterClassRes = ExtResource("5_voulb")
+character_class_res = ExtResource("5_voulb")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2

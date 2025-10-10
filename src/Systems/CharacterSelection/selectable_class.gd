@@ -1,11 +1,12 @@
+class_name SelectableClass
 extends PanelContainer
 
 signal class_selected(selectable_class: PanelContainer)
 
-@export var CharacterClassRes: CharacterClass
+@export var character_class_res: CharacterClass
 
-@onready var ClassName: Label = %ClassName
-@onready var CharacterArt: TextureRect = %CharacterArt
+@onready var _class_name: Label = %ClassName
+@onready var _character_art: TextureRect = %CharacterArt
 
 var _is_selected: bool = false
 
@@ -31,6 +32,9 @@ func set_selected(selected: bool) -> void:
 	else:
 		remove_theme_stylebox_override("panel")
 
+func get_character_class() -> CharacterClassList.CHARACTER_CLASS_LIST:
+	return character_class_res.character_class
+
 func _create_selected_style() -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.2, 0.2, 0.2, 1.0)
@@ -42,14 +46,14 @@ func _create_selected_style() -> StyleBoxFlat:
 	return style
 
 func _display_class_name() -> void:
-	if CharacterClassRes == null:
+	if character_class_res == null:
 		return
 	
-	var class_name_text: String = CharacterClassList.CHARACTER_CLASS_LIST.keys()[CharacterClassRes.character_class - 1]
-	ClassName.text = class_name_text.capitalize()
+	var class_name_text: String = CharacterClassList.CHARACTER_CLASS_LIST.keys()[character_class_res.character_class - 1]
+	_class_name.text = class_name_text.capitalize()
 
 func _display_character_art() -> void:
-	if CharacterClassRes == null:
+	if character_class_res == null:
 		return
 	
-	CharacterArt.texture = CharacterClassRes.character_art
+	_character_art.texture = character_class_res.character_art

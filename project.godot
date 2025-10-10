@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 
 TreeGeneratorGlobals="*res://src/Systems/TreeGenerator/Autoload/tree_generator_globals.gd"
 Global="*res://src/Globals/Global.gd"
+SavesManager="*res://src/Systems/SavesManager/saves_manager.gd"
 
 [debug]
 

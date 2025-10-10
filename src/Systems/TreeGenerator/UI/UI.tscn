@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bdtn4j7cx5ir8" path="res://src/Systems/TreeGenerator/UI/size_select.gd" id="4_r6hkt"]
 [ext_resource type="Script" uid="uid://drv1qote4rgxl" path="res://src/Systems/TreeGenerator/UI/texture_select.gd" id="6_et6xy"]
 [ext_resource type="Script" uid="uid://bdnw1cnlohbvi" path="res://src/Systems/TreeGenerator/UI/point_name_input.gd" id="7_nf0g0"]
-[ext_resource type="Script" uid="uid://bb73w5o4n5v3j" path="res://src/Common/point_textures.gd" id="7_tlnj7"]
+[ext_resource type="Script" uid="uid://bb73w5o4n5v3j" path="res://src/Common/Point/point_textures.gd" id="7_tlnj7"]
 [ext_resource type="Script" uid="uid://bcokvvkumfqco" path="res://src/Systems/TreeGenerator/UI/stats_list.gd" id="11_stats"]
 [ext_resource type="Script" uid="uid://c7rk8p3n4xm2v" path="res://src/Systems/TreeGenerator/UI/rules_list.gd" id="12_rules"]
 [ext_resource type="Script" uid="uid://e6a10sx31vd4" path="res://src/Systems/TreeGenerator/UI/skills_list.gd" id="13_skills"]

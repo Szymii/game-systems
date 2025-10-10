@@ -23,14 +23,11 @@ func _create_slot(_index: int) -> Node:
 func _connect_empty_slots() -> void:
 	for child in grid_container.get_children():
 		if child.has_signal("slot_clicked"):
-			child.connect("slot_clicked", _on_empty_slot_clicked)
+			child.connect("slot_clicked", _show_create_character_modal)
 
 func _connect_modal() -> void:
 	if character_selection_modal.has_signal("modal_closed"):
 		character_selection_modal.connect("modal_closed", _hide_create_character_modal)
-
-func _on_empty_slot_clicked() -> void:
-	_show_create_character_modal()
 
 func _show_create_character_modal() -> void:
 	character_selection_modal.visible = true
