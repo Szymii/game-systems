@@ -1,10 +1,10 @@
 class_name SavedCharacter
 extends Resource
 
-@export var id: String = ""
-@export var character_name: String = ""
+@export var id: String
+@export var character_name: String
 @export var character_class: CharacterClassList.CHARACTER_CLASS_LIST = CharacterClassList.CHARACTER_CLASS_LIST.SORCERER
-@export var slot_index: int = -1
+@export var character_texture_path: String
 @export var created_timestamp: int = 0
 @export var level: int = 1
 

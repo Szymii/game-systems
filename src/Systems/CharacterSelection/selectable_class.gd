@@ -35,6 +35,9 @@ func set_selected(selected: bool) -> void:
 func get_character_class() -> CharacterClassList.CHARACTER_CLASS_LIST:
 	return character_class_res.character_class
 
+func get_character_art() -> String:
+	return character_class_res.character_art.resource_path
+
 func _create_selected_style() -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.2, 0.2, 0.2, 1.0)

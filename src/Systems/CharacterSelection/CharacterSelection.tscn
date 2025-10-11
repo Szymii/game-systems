@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgou1ylelqsgv"]
+[gd_scene load_steps=7 format=3 uid="uid://bgou1ylelqsgv"]
 
 [ext_resource type="Texture2D" uid="uid://ddv6ic7t2sjpn" path="res://assets/splash.png" id="1_ed428"]
 [ext_resource type="Script" uid="uid://dlxvfrr3og0i5" path="res://src/Systems/CharacterSelection/character_selection.gd" id="1_v0q7j"]
-[ext_resource type="PackedScene" uid="uid://bpljgpj7qgxmq" path="res://src/Systems/CharacterSelection/EmptySlot.tscn" id="2_wywgh"]
+[ext_resource type="PackedScene" uid="uid://k8yq3iqowtbl" path="res://src/Systems/CharacterSelection/EmptySlot.tscn" id="2_w7osl"]
+[ext_resource type="PackedScene" uid="uid://bpljgpj7qgxmq" path="res://src/Systems/CharacterSelection/CharacterSlot.tscn" id="2_wywgh"]
 [ext_resource type="PackedScene" uid="uid://d1y0kmx850qbq" path="res://src/Systems/CharacterSelection/CreateCharacterModal.tscn" id="3_pumyl"]
 [ext_resource type="StyleBox" uid="uid://bg880v84uyij3" path="res://src/Common/UI/ui_transparent_stylebox.tres" id="4_4jih5"]
 
@@ -14,7 +15,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v0q7j")
-empty_slot_scene = ExtResource("2_wywgh")
+empty_slot_scene = ExtResource("2_w7osl")
+character_slot_scene = ExtResource("2_wywgh")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

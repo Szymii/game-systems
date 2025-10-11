@@ -1,10 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://k8yq3iqowtbl"]
+[gd_scene load_steps=3 format=3 uid="uid://bpljgpj7qgxmq"]
 
 [ext_resource type="StyleBox" uid="uid://bg880v84uyij3" path="res://src/Common/UI/ui_transparent_stylebox.tres" id="1_p8tns"]
-[ext_resource type="Script" uid="uid://lls307j2xkyn" path="res://src/Systems/CharacterSelection/empty_slot.gd" id="2_wjuii"]
-[ext_resource type="Texture2D" uid="uid://bkdfqwq6m38up" path="res://assets/UI/plus-circle.svg" id="3_lkb36"]
+[ext_resource type="Script" uid="uid://bga8xm2kju354" path="res://src/Systems/CharacterSelection/character_slot.gd" id="2_0wvil"]
 
-[node name="EmptySlot" type="Panel"]
+[node name="CharacterSlot" type="Panel"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,7 +12,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("1_p8tns")
-script = ExtResource("2_wjuii")
+script = ExtResource("2_0wvil")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -31,13 +30,29 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Empty"
+
+[node name="CharacterName" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "lvl:"
+horizontal_alignment = 1
+
+[node name="Level" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
 horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("3_lkb36")
-stretch_mode = 3
+expand_mode = 1
+stretch_mode = 5

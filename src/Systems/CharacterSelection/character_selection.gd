@@ -1,6 +1,7 @@
 extends Control
 
 @export var empty_slot_scene: PackedScene
+@export var character_slot_scene: PackedScene
 const TOTAL_SLOTS = 8
 
 @onready var grid_container: GridContainer = %GridContainer
@@ -12,13 +13,25 @@ func _ready() -> void:
 	_connect_empty_slots()
 
 func _populate_slots() -> void:
-	for i in range(TOTAL_SLOTS):
-		var slot: Node = _create_slot(i)
-		grid_container.add_child(slot)
+	var characters := SavesManager.get_characters()
+	var filled_slots := characters.size()
 
-func _create_slot(_index: int) -> Node:
+	for character in characters:
+		_create_character_slot(character)
+		
+
+	for i in range(TOTAL_SLOTS - filled_slots):
+		_create_empty_slot()
+
+func _create_character_slot(character: SavedCharacter) -> void:
+	var slot: CharacterSlot = character_slot_scene.instantiate()
+	print(character.character_name)
+	grid_container.add_child(slot)
+	slot.setup(character.character_name, character.level, character.character_texture_path)
+
+func _create_empty_slot() -> void:
 	var slot := empty_slot_scene.instantiate()
-	return slot
+	grid_container.add_child(slot)
 
 func _connect_empty_slots() -> void:
 	for child in grid_container.get_children():

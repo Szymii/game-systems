@@ -43,7 +43,7 @@ func _on_name_changed(new_text: String) -> void:
 
 func _on_create_btn_pressed() -> void:
 	if _character_name and _selected_class:
-		SavesManager.create_and_save(_character_name, _selected_class.get_character_class())
+		SavesManager.create_and_save(_character_name, _selected_class.get_character_class(), _selected_class.get_character_art())
 	pass
 
 func _close_modal() -> void:
