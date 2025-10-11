@@ -25,7 +25,6 @@ func _populate_slots() -> void:
 
 func _create_character_slot(character: SavedCharacter) -> void:
 	var slot: CharacterSlot = character_slot_scene.instantiate()
-	print(character.character_name)
 	grid_container.add_child(slot)
 	slot.setup(character.character_name, character.level, character.character_texture_path)
 

@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="CharacterClass" load_steps=4 format=3 uid="uid://d17h86q5x4qgh"]
+[gd_resource type="Resource" script_class="CharacterClass" load_steps=3 format=3 uid="uid://d17h86q5x4qgh"]
 
-[ext_resource type="Texture2D" uid="uid://dmin067qjj6x8" path="res://assets/UI/Cleric_art.png" id="1_dtag3"]
-[ext_resource type="Texture2D" uid="uid://dbjihrw6i55am" path="res://assets/characters/Cleric.png" id="2_srqe7"]
+[ext_resource type="Texture2D" uid="uid://dkrnxac7njmuc" path="res://assets/UI/Cleric.png" id="1_y0weq"]
 [ext_resource type="Script" uid="uid://lmkaeie7ucx0" path="res://src/Common/CharacterClass/character_class_res.gd" id="3_e01q3"]
 
 [resource]
 script = ExtResource("3_e01q3")
 character_class = 2
-character_sprite = ExtResource("2_srqe7")
-character_art = ExtResource("1_dtag3")
+character_art = ExtResource("1_y0weq")
 metadata/_custom_type_script = "uid://lmkaeie7ucx0"

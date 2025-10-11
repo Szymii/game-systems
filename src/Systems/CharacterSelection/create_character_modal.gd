@@ -30,7 +30,6 @@ func _connect_ui_elements() -> void:
 	CloseBtn.pressed.connect(_close_modal)
 
 func _on_class_selected(selectable_class: SelectableClass) -> void:
-	print(selectable_class)
 	if _selected_class != null and _selected_class.has_method("set_selected"):
 		_selected_class.call("set_selected", false)
 	

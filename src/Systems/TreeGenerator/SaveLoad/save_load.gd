@@ -19,7 +19,6 @@ func _load_tree() -> void:
 
 func _check_version_and_migrate(saved_data: SavedData) -> void:
 	var save_version: int = saved_data.version
-	print(save_version)
 	
 	if save_version < SavedData.CURRENT_VERSION:
 		print("[SaveLoad] Detected old save version ", save_version,

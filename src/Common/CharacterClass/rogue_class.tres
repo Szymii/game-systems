@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="CharacterClass" load_steps=4 format=3 uid="uid://b05pgkthky1yg"]
+[gd_resource type="Resource" script_class="CharacterClass" load_steps=3 format=3 uid="uid://b05pgkthky1yg"]
 
 [ext_resource type="Script" uid="uid://lmkaeie7ucx0" path="res://src/Common/CharacterClass/character_class_res.gd" id="1_ccfa2"]
-[ext_resource type="Texture2D" uid="uid://c1sd061uc1ihl" path="res://assets/UI/Rogue_art.png" id="1_kpht4"]
-[ext_resource type="Texture2D" uid="uid://gvjqcc6wru4x" path="res://assets/characters/Rogue.png" id="2_mcum6"]
+[ext_resource type="Texture2D" uid="uid://b2youdw4c8oib" path="res://assets/UI/Rogue.png" id="1_cu3d4"]
 
 [resource]
 script = ExtResource("1_ccfa2")
 character_class = 3
-character_sprite = ExtResource("2_mcum6")
-character_art = ExtResource("1_kpht4")
+character_art = ExtResource("1_cu3d4")
 metadata/_custom_type_script = "uid://lmkaeie7ucx0"

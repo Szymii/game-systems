@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="CharacterClass" load_steps=4 format=3 uid="uid://bx4fmppwa63bq"]
+[gd_resource type="Resource" script_class="CharacterClass" load_steps=3 format=3 uid="uid://bx4fmppwa63bq"]
 
 [ext_resource type="Script" uid="uid://lmkaeie7ucx0" path="res://src/Common/CharacterClass/character_class_res.gd" id="1_aiw6u"]
-[ext_resource type="Texture2D" uid="uid://c2cv3tpd1cj23" path="res://assets/UI/Knight_art.png" id="1_dfvrs"]
-[ext_resource type="Texture2D" uid="uid://8g6was8bv5y7" path="res://assets/characters/Knight.png" id="2_q5qa6"]
+[ext_resource type="Texture2D" uid="uid://o24anwf4kqh2" path="res://assets/UI/Knight.png" id="1_e5n4e"]
 
 [resource]
 script = ExtResource("1_aiw6u")
 character_class = 4
-character_sprite = ExtResource("2_q5qa6")
-character_art = ExtResource("1_dfvrs")
+character_art = ExtResource("1_e5n4e")
 metadata/_custom_type_script = "uid://lmkaeie7ucx0"
