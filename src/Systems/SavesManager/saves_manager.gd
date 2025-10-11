@@ -13,7 +13,7 @@ func create_and_save(_character_name: String, _character_class: CharacterClassLi
   current_character.append(new_character)
 
   _save_characters()
-  Global.character_created(new_character)
+  Global.character_created()
 
 func get_characters() -> Array[SavedCharacter]:
   return current_character
@@ -24,9 +24,9 @@ func _save_characters() -> void:
   ResourceSaver.save(saved_data, "user://saved_chars.tres")
 
 func _load_characters() -> void:
-  if not FileAccess.file_exists("user://saved_chars.tres"):
-    return
+ if not FileAccess.file_exists("user://saved_chars.tres"):
+  return
   
-  var saved_data := load("user://saved_chars.tres") as SavedCharactersList
-  if saved_data:
-    current_character = saved_data.characters
+ var saved_data := load("user://saved_chars.tres") as SavedCharactersList
+ if saved_data:
+  current_character = saved_data.characters

@@ -1,8 +1,8 @@
 extends Node
 
-signal character_created_signal(character: SavedCharacter)
+signal character_created_signal()
 
 var game_controller: GameController
 
-func character_created(character: SavedCharacter) -> void:
-	character_created_signal.emit(character)
+func character_created() -> void:
+	character_created_signal.emit()
