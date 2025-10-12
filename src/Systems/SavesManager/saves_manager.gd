@@ -12,6 +12,7 @@ func create_and_save(_character_name: String, _character_class: CharacterClass) 
   current_character.append(new_character)
 
   _save_characters()
+  # create unikalny plik zapisu dla postaci jeśli nie istnieje character_id.tres
   Global.character_created()
 
 func get_characters() -> Array[SavedCharacter]:
