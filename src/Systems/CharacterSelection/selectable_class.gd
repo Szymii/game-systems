@@ -32,11 +32,8 @@ func set_selected(selected: bool) -> void:
 	else:
 		remove_theme_stylebox_override("panel")
 
-func get_character_class() -> CharacterClassList.CHARACTER_CLASS_LIST:
-	return character_class_res.character_class
-
-func get_character_art() -> String:
-	return character_class_res.character_art.resource_path
+func get_character_class() -> CharacterClass:
+	return character_class_res
 
 func _create_selected_style() -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()

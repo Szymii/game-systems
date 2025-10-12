@@ -19,11 +19,11 @@ func _on_gui_input(event: InputEvent) -> void:
 		if mouse_event.button_index == MOUSE_BUTTON_LEFT and mouse_event.pressed:
 			slot_clicked.emit(self)
 
-func setup(_character_is: String, _character_name: String, _character_level: int, _character_art: String) -> void:
+func setup(_character_is: String, _character_name: String, _character_level: int, _character_class_texture: Texture2D) -> void:
 	character_id = _character_is
 	character_name.text = _character_name
 	character_level.text = str(_character_level)
-	character_art.texture = load(_character_art)
+	character_art.texture = _character_class_texture
 
 func set_selected(selected: bool) -> void:
 	_is_selected = selected

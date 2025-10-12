@@ -31,7 +31,7 @@ func _populate_slots() -> void:
 func _create_character_slot(character: SavedCharacter) -> void:
 	var slot: CharacterSlot = character_slot_scene.instantiate()
 	grid_container.add_child(slot)
-	slot.setup(character.id, character.character_name, character.level, character.character_texture_path)
+	slot.setup(character.id, character.character_name, character.level, character.class_resource.character_art)
 	slot.slot_clicked.connect(_on_character_slot_clicked)
 
 func _create_empty_slot() -> void:

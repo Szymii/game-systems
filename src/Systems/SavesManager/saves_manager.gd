@@ -5,11 +5,10 @@ var current_character: Array[SavedCharacter] = []
 func _ready() -> void:
   _load_characters()
 
-func create_and_save(_character_name: String, _character_class: CharacterClassList.CHARACTER_CLASS_LIST, _art_path: String) -> void:
+func create_and_save(_character_name: String, _character_class: CharacterClass) -> void:
   var new_character := SavedCharacter.new()
   new_character.character_name = _character_name
-  new_character.character_class = _character_class
-  new_character.character_texture_path = _art_path
+  new_character.class_resource = _character_class
   current_character.append(new_character)
 
   _save_characters()

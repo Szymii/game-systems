@@ -3,8 +3,7 @@ extends Resource
 
 @export var id: String
 @export var character_name: String
-@export var character_class: CharacterClassList.CHARACTER_CLASS_LIST = CharacterClassList.CHARACTER_CLASS_LIST.SORCERER
-@export var character_texture_path: String
+@export var class_resource: CharacterClass
 @export var created_timestamp: int = 0
 @export var level: int = 1
 
