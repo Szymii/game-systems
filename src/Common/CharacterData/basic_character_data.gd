@@ -3,4 +3,5 @@ extends Resource
 
 @export var character_name: String
 @export var class_resource: CharacterClass
+@export var character_level: int = 1
 @export var current_exp: int = 0
