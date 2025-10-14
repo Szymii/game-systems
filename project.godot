@@ -54,6 +54,7 @@ enabled=PackedStringArray("res://addons/resources_spreadsheet_view/plugin.cfg")
 GraphPoint="Nodes on the graph"
 SavableTreeElements=""
 GraphStartingPoint="Starting points from TreeCenter"
+player=""
 
 [input]
 

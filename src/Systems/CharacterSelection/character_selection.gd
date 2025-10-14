@@ -6,6 +6,7 @@ const TOTAL_SLOTS = 8
 
 @onready var grid_container: GridContainer = %GridContainer
 @onready var character_selection_modal: MarginContainer = %CreateCharacterModal
+@onready var new_game_button: Button = %NewGame
 
 var _selected_character_id: String
 var _selected_slot: CharacterSlot = null
@@ -14,6 +15,7 @@ func _ready() -> void:
 	_connect_modal()
 	_populate_slots()
 	Global.character_created_signal.connect(_populate_slots)
+	new_game_button.pressed.connect(_on_new_game_pressed)
 
 func _populate_slots() -> void:
 	for child in grid_container.get_children():
@@ -60,3 +62,7 @@ func _show_create_character_modal() -> void:
 
 func _hide_create_character_modal() -> void:
 	character_selection_modal.visible = false
+
+func _on_new_game_pressed() -> void:
+	if _selected_character_id:
+		print(_selected_character_id)

@@ -58,6 +58,7 @@ size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("4_4jih5")
 
 [node name="NewGame" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 text = "New Game"
