@@ -65,4 +65,4 @@ func _hide_create_character_modal() -> void:
 
 func _on_new_game_pressed() -> void:
 	if _selected_character_id:
-		print(_selected_character_id)
+		Global.trigger_game_started(_selected_character_id)

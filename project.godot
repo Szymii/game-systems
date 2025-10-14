@@ -56,6 +56,10 @@ SavableTreeElements=""
 GraphStartingPoint="Starting points from TreeCenter"
 player=""
 
+[gui]
+
+theme/custom_font="uid://c3q7rvp7njjc8"
+
 [input]
 
 interaction={

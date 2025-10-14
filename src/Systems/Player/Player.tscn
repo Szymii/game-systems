@@ -5,21 +5,32 @@
 [ext_resource type="Script" uid="uid://b1yt4hu2qnh4c" path="res://src/Systems/Player/camera_controller.gd" id="3_vy1tf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rwoh2"]
-radius = 23.0
-height = 108.0
+radius = 20.0
+height = 90.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+z_index = 1
 motion_mode = 1
 platform_floor_layers = 0
 script = ExtResource("1_3d0x9")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, -58)
+position = Vector2(1, -53)
+scale = Vector2(0.8780488, 0.859375)
 texture = ExtResource("1_1ws4p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -54)
+position = Vector2(4, -53)
 shape = SubResource("CapsuleShape2D_rwoh2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.6, 0.6)
 script = ExtResource("3_vy1tf")
+
+[node name="PlayerName" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -76.0
+offset_top = -135.0
+offset_right = 75.0
+offset_bottom = -112.0
+horizontal_alignment = 1

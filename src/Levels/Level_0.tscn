@@ -1,8 +1,15 @@
-[gd_scene format=3 uid="uid://jp3d8x4icktd"]
+[gd_scene load_steps=2 format=3 uid="uid://jp3d8x4icktd"]
+
+[ext_resource type="Script" uid="uid://blcdllj51kcmn" path="res://src/Levels/level.gd" id="1_retdg"]
 
 [node name="Level0" type="Node2D"]
+script = ExtResource("1_retdg")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 3283.0
 offset_bottom = 1308.0
 color = Color(0.15294118, 0.15294118, 0.26666668, 1)
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(340, 660)
