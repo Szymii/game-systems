@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://blbpgn8cm6sqc"]
+
+[ext_resource type="Script" uid="uid://bn4xy1jvtktp6" path="res://src/Systems/Inventory/InventoryItem/inventory_item.gd" id="1_6pthi"]
+
+[node name="InventoryItem" type="Sprite2D"]
+script = ExtResource("1_6pthi")
