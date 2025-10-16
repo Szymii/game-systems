@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://c2s0wth04m00d"]
+[gd_scene load_steps=3 format=3 uid="uid://c2s0wth04m00d"]
+
+[ext_resource type="Script" uid="uid://dkdhqn4rqfs0y" path="res://src/Systems/Player/PlayerUI/skill_bar.gd" id="1_skill_bar"]
+[ext_resource type="PackedScene" uid="uid://da1x4dhwtg161" path="res://src/Systems/Player/PlayerUI/SkillSlot.tscn" id="2_svis3"]
 
 [node name="SkillBar" type="Panel"]
 anchors_preset = 12
@@ -8,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
+script = ExtResource("1_skill_bar")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -29,108 +33,38 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Slot1" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+[node name="Slot1" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_svis3")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Slot1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Slot2" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+[node name="Slot2" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_svis3")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Slot2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Slot3" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+[node name="Slot3" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_svis3")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Slot3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Slot4" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+[node name="Slot4" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_svis3")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Slot4"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Slot5" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+[node name="Slot5" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_svis3")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Slot5"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [node name="VSeparator2" type="VSeparator" parent="MarginContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 
-[node name="Slot6" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+[node name="Slot6" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_svis3")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Slot6"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Slot7" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+[node name="Slot7" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_svis3")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Slot7"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [node name="VSeparator3" type="VSeparator" parent="MarginContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
