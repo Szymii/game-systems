@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SkillResource" load_steps=3 format=3 uid="uid://dtx2i6t5v3l17"]
+
+[ext_resource type="Script" uid="uid://dftcgq8e0spty" path="res://src/Common/Skills/skill_res.gd" id="1_5v1gs"]
+[ext_resource type="Texture2D" uid="uid://bbd5u8jc38yd7" path="res://assets/tree/default-attack.png" id="2_frji1"]
+
+[resource]
+script = ExtResource("1_5v1gs")
+skill_name = "Default Attack"
+skill_icon = ExtResource("2_frji1")
+metadata/_custom_type_script = "uid://dftcgq8e0spty"

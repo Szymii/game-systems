@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cymbi1c0bp8hp"]
+
+[ext_resource type="PackedScene" uid="uid://b0hkyan1kdmy0" path="res://src/Systems/Player/PlayerUI/SkillList.tscn" id="1_ac44e"]
+[ext_resource type="PackedScene" uid="uid://c2s0wth04m00d" path="res://src/Systems/Player/PlayerUI/SkillBar.tscn" id="2_lb8rr"]
+
+[node name="PlayerUi" type="CanvasLayer"]
+
+[node name="SkillList" parent="." instance=ExtResource("1_ac44e")]
+
+[node name="SkillBar" parent="." instance=ExtResource("2_lb8rr")]
