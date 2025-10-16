@@ -36,22 +36,27 @@ size_flags_horizontal = 3
 [node name="Slot1" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_svis3")]
 unique_name_in_owner = true
 layout_mode = 2
+slot_name = "1"
 
 [node name="Slot2" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_svis3")]
 unique_name_in_owner = true
 layout_mode = 2
+slot_name = "2"
 
 [node name="Slot3" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_svis3")]
 unique_name_in_owner = true
 layout_mode = 2
+slot_name = "3"
 
 [node name="Slot4" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_svis3")]
 unique_name_in_owner = true
 layout_mode = 2
+slot_name = "4"
 
 [node name="Slot5" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_svis3")]
 unique_name_in_owner = true
 layout_mode = 2
+slot_name = "5"
 
 [node name="VSeparator2" type="VSeparator" parent="MarginContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
@@ -61,10 +66,12 @@ layout_mode = 2
 [node name="Slot6" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_svis3")]
 unique_name_in_owner = true
 layout_mode = 2
+slot_name = "6"
 
 [node name="Slot7" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_svis3")]
 unique_name_in_owner = true
 layout_mode = 2
+slot_name = "7"
 
 [node name="VSeparator3" type="VSeparator" parent="MarginContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)

@@ -30,10 +30,12 @@ script = ExtResource("3_vy1tf")
 
 [node name="PlayerName" type="Label" parent="."]
 unique_name_in_owner = true
-offset_left = -76.0
-offset_top = -135.0
-offset_right = 75.0
-offset_bottom = -112.0
+offset_left = -122.0
+offset_top = -151.0
+offset_right = 120.91304
+offset_bottom = -114.0
+theme_override_font_sizes/font_size = 28
+text = "Test Name"
 horizontal_alignment = 1
 
 [node name="PlayerUi" parent="." instance=ExtResource("4_3nmda")]

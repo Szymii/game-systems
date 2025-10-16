@@ -1,8 +1,11 @@
-[gd_scene format=3 uid="uid://da1x4dhwtg161"]
+[gd_scene load_steps=2 format=3 uid="uid://da1x4dhwtg161"]
+
+[ext_resource type="Script" uid="uid://oknc0irfbduo" path="res://src/Systems/Player/PlayerUI/skill_slot.gd" id="1_ujdgv"]
 
 [node name="Slot1" type="TextureRect"]
 custom_minimum_size = Vector2(32, 32)
 expand_mode = 1
+script = ExtResource("1_ujdgv")
 
 [node name="Panel" type="Panel" parent="."]
 show_behind_parent = true
@@ -13,3 +16,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 18.0

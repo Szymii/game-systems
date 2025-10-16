@@ -37,3 +37,16 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 		_skills[slot_index] = skill
 		var slots := _get_slots()
 		slots[slot_index].texture = skill.skill_icon
+
+func _gui_input(event: InputEvent) -> void:
+	if event.is_action_pressed("cancel_interaction"):
+		var mouse_pos := get_local_mouse_position()
+		var slot_index := _find_slot_at_position(mouse_pos)
+		if slot_index >= 0:
+			remove_skill_from_slot(slot_index)
+
+func remove_skill_from_slot(slot_index: int) -> void:
+	if slot_index >= 0 and slot_index < _skills.size() and _skills[slot_index] != null:
+		_skills[slot_index] = null
+		var slots := _get_slots()
+		slots[slot_index].texture = null
