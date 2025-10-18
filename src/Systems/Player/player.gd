@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var name_label: Label = %PlayerName
+@onready var player_status: PlayerStatus = $PlayerUi/PlayerStatus
 
 var basic_data: BasicCharacterData
 var base_stats_table: StatsTable
@@ -23,6 +24,8 @@ func _physics_process(_delta: float) -> void:
 func _ready() -> void:
 	if basic_data:
 		name_label.text = basic_data.character_name
+	if player_status:
+		player_status.initialize(stats_runtime, stats_manager, basic_data.class_resource.character_art)
 
 func initialize(data: SavedCharacterData) -> void:
 	basic_data = data.basic_character_data

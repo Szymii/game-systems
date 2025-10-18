@@ -1,6 +1,9 @@
 class_name StatsRuntime
 extends Node
 
+signal hp_changed(current: int, max: int)
+signal mana_changed(current: int, max: int)
+
 var regen_timer: Timer
 
 var current_hp: int
@@ -26,7 +29,11 @@ func _on_regen_tick() -> void:
 	var mana_regen := stats_manager.get_stat("mana_regeneration")
 
 	if life_regen > 0:
-		current_hp = min(current_hp + life_regen, stats_manager.get_stat("life"))
+		var max_hp := stats_manager.get_stat("life")
+		current_hp = min(current_hp + life_regen, max_hp)
+		hp_changed.emit(current_hp, max_hp)
 
 	if mana_regen > 0:
-		current_mana = min(current_mana + mana_regen, stats_manager.get_stat("mana"))
+		var max_mana := stats_manager.get_stat("mana")
+		current_mana = min(current_mana + mana_regen, max_mana)
+		mana_changed.emit(current_mana, max_mana)
