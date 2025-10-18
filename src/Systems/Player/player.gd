@@ -7,7 +7,18 @@ extends CharacterBody2D
 @onready var name_label: Label = %PlayerName
 
 var basic_data: BasicCharacterData
-var stats_table: StatsTable
+var base_stats_table: StatsTable
+# var equipment: EquipmentData
+# var skill_tree: SkillTreeData
+# var buffs: Array[BuffData] = []
+
+var stats_manager: StatsManager
+var stats_runtime: StatsRuntime
+
+func _physics_process(_delta: float) -> void:
+	velocity = PlayerMovement.handle_input(movement_speed)
+	PlayerMovement.handle_direction_facing(sprite, get_global_mouse_position(), global_position)
+	move_and_slide()
 
 func _ready() -> void:
 	if basic_data:
@@ -15,9 +26,11 @@ func _ready() -> void:
 
 func initialize(data: SavedCharacterData) -> void:
 	basic_data = data.basic_character_data
-	stats_table = data.character_stats
+	base_stats_table = data.character_stats
 
-func _physics_process(_delta: float) -> void:
-	velocity = PlayerMovement.handle_input(movement_speed)
-	PlayerMovement.handle_direction_facing(sprite, get_global_mouse_position(), global_position)
-	move_and_slide()
+	stats_manager = StatsManager.new()
+	stats_manager.setup(base_stats_table)
+
+	stats_runtime = StatsRuntime.new()
+	add_child(stats_runtime)
+	stats_runtime.setup(stats_manager)
