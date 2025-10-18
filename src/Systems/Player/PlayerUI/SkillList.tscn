@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0hkyan1kdmy0"]
+[gd_scene load_steps=7 format=3 uid="uid://b0hkyan1kdmy0"]
 
 [ext_resource type="StyleBox" uid="uid://bg880v84uyij3" path="res://src/Common/UI/ui_transparent_stylebox.tres" id="1_x4asc"]
 [ext_resource type="Script" uid="uid://qqgscry02jcm" path="res://src/Systems/Player/PlayerUI/skill_list.gd" id="2_qmny2"]
 [ext_resource type="Script" uid="uid://dxkslmuxg2e64" path="res://src/Systems/Player/PlayerUI/skill_list_panel.gd" id="2_w1cyk"]
+[ext_resource type="StyleBox" uid="uid://56g037f61dna" path="res://src/Common/UI/ui_solid_stylebox.tres" id="3_63vxx"]
 [ext_resource type="Script" uid="uid://dftcgq8e0spty" path="res://src/Common/Skills/skill_res.gd" id="3_w1cyk"]
 [ext_resource type="Resource" uid="uid://dtx2i6t5v3l17" path="res://src/Common/Skills/default_attack.tres" id="4_63vxx"]
 
@@ -30,5 +31,6 @@ theme_override_constants/margin_bottom = 4
 [node name="ItemList" type="ItemList" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_styles/panel = ExtResource("3_63vxx")
 script = ExtResource("2_qmny2")
 skill_list = Array[ExtResource("3_w1cyk")]([ExtResource("4_63vxx")])
