@@ -1,7 +1,7 @@
 class_name ItemGrid
 extends GridContainer
 
-const SLOT_SIZE: int = 16
+const SLOT_SIZE: int = 32
 
 @export var inventory_slot_scene: PackedScene
 @export var dimensions: Vector2i

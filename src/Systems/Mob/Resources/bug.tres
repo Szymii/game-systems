@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="MobData" load_steps=5 format=3 uid="uid://drn7hon3ud2am"]
+
+[ext_resource type="Script" uid="uid://cnm6t70cni2g1" path="res://src/Systems/Mob/mob_data.gd" id="1_aoox4"]
+[ext_resource type="Script" uid="uid://cioay1a4da3o8" path="res://src/Systems/Stats/stats_table.gd" id="1_hdsuj"]
+[ext_resource type="Texture2D" uid="uid://dcrcnaqt7tugc" path="res://assets/mobs/bug.png" id="2_wvywq"]
+
+[sub_resource type="Resource" id="Resource_rbk26"]
+resource_local_to_scene = true
+script = ExtResource("1_hdsuj")
+life = 20
+mana = 0
+metadata/_custom_type_script = "uid://cioay1a4da3o8"
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_aoox4")
+mob_texture = ExtResource("2_wvywq")
+base_stats = SubResource("Resource_rbk26")
+metadata/_custom_type_script = "uid://cnm6t70cni2g1"

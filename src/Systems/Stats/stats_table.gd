@@ -7,7 +7,7 @@ extends Resource
 @export var chaos: int = 0
 
 @export var life: int = 100
-@export var life_regeneration: int = 1
+@export var life_regeneration: int = 0
 @export var mana: int = 100
 @export var mana_regeneration: int = 1
 @export var armour: int = 0

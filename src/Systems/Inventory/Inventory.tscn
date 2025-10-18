@@ -1,49 +1,277 @@
-[gd_scene load_steps=10 format=3 uid="uid://40kjy1pxs033"]
+[gd_scene load_steps=7 format=3 uid="uid://40kjy1pxs033"]
 
 [ext_resource type="Script" uid="uid://ccbw5f3peussh" path="res://src/Systems/Inventory/inventory.gd" id="1_78d70"]
+[ext_resource type="StyleBox" uid="uid://bg880v84uyij3" path="res://src/Common/UI/ui_transparent_stylebox.tres" id="1_o150l"]
 [ext_resource type="PackedScene" uid="uid://blbpgn8cm6sqc" path="res://src/Systems/Inventory/InventoryItem/InventoryItem.tscn" id="2_borx4"]
-[ext_resource type="Script" uid="uid://dj5wk41vxghlk" path="res://src/Systems/Inventory/InventoryItem/item_data.gd" id="2_msave"]
 [ext_resource type="Script" uid="uid://p87exaohkueh" path="res://src/Systems/Inventory/item_grid.gd" id="2_w2ucx"]
-[ext_resource type="Texture2D" uid="uid://dxu54jsvt6gbq" path="res://assets/items/item_1.png" id="3_1vmyl"]
-[ext_resource type="Texture2D" uid="uid://ciqdwnl8p3r4f" path="res://assets/items/item_4.png" id="3_msave"]
 [ext_resource type="PackedScene" uid="uid://b4llv633he0u2" path="res://src/Systems/Inventory/InventorySlot.tscn" id="4_o150l"]
 
-[sub_resource type="Resource" id="Resource_1vmyl"]
-script = ExtResource("2_msave")
-name = "TestItem"
-texture = ExtResource("3_msave")
-dimensions = Vector2i(2, 1)
-metadata/_custom_type_script = "uid://dj5wk41vxghlk"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o150l"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
-[sub_resource type="Resource" id="Resource_u7wkk"]
-script = ExtResource("2_msave")
-name = "test2"
-texture = ExtResource("3_1vmyl")
-dimensions = Vector2i(1, 2)
-metadata/_custom_type_script = "uid://dj5wk41vxghlk"
+[node name="Main" type="PanelContainer"]
+theme_override_styles/panel = ExtResource("1_o150l")
 
-[node name="Main" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PanelContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="WeaponSlot" type="ColorRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.06666667, 0, 0.23921569, 0.3137255)
+
+[node name="ColorRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/WeaponSlot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
 
-[node name="Inventory" type="PanelContainer" parent="."]
+[node name="Earring" type="ColorRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.06666667, 0, 0.23921569, 0.3137255)
+
+[node name="ColorRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/Earring"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="BodyArmour" type="ColorRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.06666667, 0, 0.23921569, 0.3137255)
+
+[node name="ColorRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/BodyArmour"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Gloves" type="ColorRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.06666667, 0, 0.23921569, 0.3137255)
+
+[node name="ColorRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/Gloves"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Boots" type="ColorRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.06666667, 0, 0.23921569, 0.3137255)
+
+[node name="ColorRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/Boots"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_o150l")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="WeaponShieldSlot" type="ColorRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.06666667, 0, 0.23921569, 0.3137255)
+
+[node name="ColorRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer2/WeaponShieldSlot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Helmet" type="ColorRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.06666667, 0, 0.23921569, 0.3137255)
+
+[node name="ColorRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer2/Helmet"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Necklace" type="ColorRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.06666667, 0, 0.23921569, 0.3137255)
+
+[node name="ColorRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer2/Necklace"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="RingRight" type="ColorRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.06666667, 0, 0.23921569, 0.3137255)
+
+[node name="ColorRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer2/RingRight"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Belt" type="ColorRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.06666667, 0, 0.23921569, 0.3137255)
+
+[node name="ColorRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer2/Belt"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Inventory" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 script = ExtResource("1_78d70")
-items = Array[ExtResource("2_msave")]([SubResource("Resource_1vmyl"), SubResource("Resource_u7wkk")])
 inventory_item_scene = ExtResource("2_borx4")
 
-[node name="ItemGrid" type="GridContainer" parent="Inventory"]
+[node name="ItemGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/Inventory"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 script = ExtResource("2_w2ucx")
 inventory_slot_scene = ExtResource("4_o150l")
-dimensions = Vector2i(24, 10)
+dimensions = Vector2i(14, 6)
