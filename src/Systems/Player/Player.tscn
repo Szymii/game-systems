@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cymbi1c0bp8hp" path="res://src/Systems/Player/PlayerUI/PlayerUi.tscn" id="4_3nmda"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rwoh2"]
-radius = 20.0
-height = 90.0
+radius = 12.0
+height = 24.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
@@ -16,24 +16,24 @@ platform_floor_layers = 0
 script = ExtResource("1_3d0x9")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, -53)
+position = Vector2(1, -28.000006)
 scale = Vector2(0.8780488, 0.859375)
 texture = ExtResource("1_1ws4p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, -53)
+position = Vector2(1, -12)
 shape = SubResource("CapsuleShape2D_rwoh2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.4, 0.4)
+zoom = Vector2(0.6, 0.6)
 script = ExtResource("3_vy1tf")
 
 [node name="PlayerName" type="Label" parent="."]
 unique_name_in_owner = true
-offset_left = -122.0
-offset_top = -151.0
-offset_right = 120.91304
-offset_bottom = -114.0
+offset_left = -121.0
+offset_top = -109.0
+offset_right = 121.91304
+offset_bottom = -72.0
 theme_override_font_sizes/font_size = 28
 text = "Test Name"
 horizontal_alignment = 1

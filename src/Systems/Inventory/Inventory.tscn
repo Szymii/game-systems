@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://40kjy1pxs033"]
+[gd_scene load_steps=13 format=3 uid="uid://40kjy1pxs033"]
 
 [ext_resource type="Script" uid="uid://ccbw5f3peussh" path="res://src/Systems/Inventory/inventory.gd" id="1_78d70"]
 [ext_resource type="StyleBox" uid="uid://bg880v84uyij3" path="res://src/Common/UI/ui_transparent_stylebox.tres" id="1_o150l"]
 [ext_resource type="PackedScene" uid="uid://blbpgn8cm6sqc" path="res://src/Systems/Inventory/InventoryItem/InventoryItem.tscn" id="2_borx4"]
 [ext_resource type="Texture2D" uid="uid://bcrvm6jexl280" path="res://assets/UI/Equipment/weapon.png" id="2_msave"]
+[ext_resource type="Script" uid="uid://bppee8ulcou5r" path="res://src/Systems/Inventory/inventory_window.gd" id="2_ogsjd"]
 [ext_resource type="Script" uid="uid://p87exaohkueh" path="res://src/Systems/Inventory/item_grid.gd" id="2_w2ucx"]
 [ext_resource type="Texture2D" uid="uid://bphirbyysprrv" path="res://assets/UI/Equipment/body_armour.png" id="3_0tgut"]
 [ext_resource type="PackedScene" uid="uid://b4llv633he0u2" path="res://src/Systems/Inventory/InventorySlot.tscn" id="4_o150l"]
@@ -23,8 +24,9 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[node name="Inventory" type="PanelContainer"]
+[node name="Inventory_window" type="PanelContainer"]
 theme_override_styles/panel = ExtResource("1_o150l")
+script = ExtResource("2_ogsjd")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

@@ -1,6 +1,6 @@
 extends Camera2D
 
-const max_zoom := Vector2(0.4, 0.4)
+const max_zoom := Vector2(0.6, 0.6)
 const min_zoom := Vector2(1.5, 1.5)
 
 func _ready() -> void:

@@ -5,8 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cqb23uma3a5d8" path="res://assets/UI/MobStatusBar/mob_life_bar.png" id="2_xvmgc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mux2l"]
-radius = 21.0
-height = 42.0
+radius = 15.0
 
 [node name="Mob" type="CharacterBody2D"]
 script = ExtResource("1_xvmgc")
