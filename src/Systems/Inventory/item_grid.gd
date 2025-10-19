@@ -30,6 +30,30 @@ func attempt_to_add_item_data(item: InventoryItem, on_success: Callable) -> bool
 	item.set_init_position(_get_coords_from_slot_index(slot_index))
 	return true
 
+func get_save_data() -> Array[SavedInventoryItem]:
+	var saved_items: Array[SavedInventoryItem] = []
+	var processed_items: Dictionary = {}
+	
+	for i in slot_data.size():
+		var item := slot_data[i]
+		if item and not processed_items.has(item):
+			var saved_item := SavedInventoryItem.new()
+			saved_item.item_data = item.data
+			saved_item.slot_index = i
+			saved_items.append(saved_item)
+			processed_items[item] = true
+	
+	return saved_items
+
+func load_from_save_data(saved_items: Array[SavedInventoryItem], inventory_item_scene: PackedScene, parent_node: Node) -> void:
+	for saved_item in saved_items:
+		var inventory_item: InventoryItem = inventory_item_scene.instantiate()
+		inventory_item.data = saved_item.item_data
+		_add_item_to_slot_data(saved_item.slot_index, inventory_item)
+		parent_node.add_child(inventory_item)
+		inventory_item.set_init_position(_get_coords_from_slot_index(saved_item.slot_index))
+
+
 func _create_slots() -> void:
 	self.columns = dimensions.x
 	for y in dimensions.y:

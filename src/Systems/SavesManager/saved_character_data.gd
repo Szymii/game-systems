@@ -5,7 +5,7 @@ extends Resource
 
 @export var basic_character_data: BasicCharacterData
 @export var character_stats: StatsTable
-# inventory
+@export var inventory_items: Array[SavedInventoryItem] = []
 # equipment
 # skill tree
 

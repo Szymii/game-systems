@@ -7,11 +7,13 @@ signal level_change_requested_signal(level_path: String)
 signal try_pick_up_item_signal(item_data: ItemData, callback: Callable)
 
 var game_controller: GameController
+var current_character_id: String
 
 func character_created() -> void:
 	character_created_signal.emit()
 
 func trigger_game_started(character_id: String) -> void:
+	current_character_id = character_id
 	game_started_signal.emit(character_id)
 
 func trigger_level_change(level_path: String) -> void:
