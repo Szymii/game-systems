@@ -54,7 +54,7 @@ func _on_game_started(character_id: String) -> void:
 		return
 	
 	var player := _spawn_player(character_data)
-	_load_level("res://src/Levels/Level_0.tscn",player)
+	_load_level("res://src/Levels/Level0/Level_0.tscn",player)
 	clear_gui_scene()
 
 func _spawn_player(data: SavedCharacterData) -> Player:

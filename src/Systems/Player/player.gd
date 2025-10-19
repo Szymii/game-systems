@@ -18,7 +18,6 @@ var stats_runtime: StatsRuntime
 
 func _physics_process(_delta: float) -> void:
 	velocity = PlayerMovement.handle_input(movement_speed)
-	PlayerMovement.handle_direction_facing(sprite, get_global_mouse_position(), global_position)
 	move_and_slide()
 
 func _ready() -> void:

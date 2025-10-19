@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://bu565x4bv3d0"]
-
-[ext_resource type="Script" uid="uid://dj5wk41vxghlk" path="res://src/Systems/Inventory/InventoryItem/item_data.gd" id="1_ywqcq"]
-
-[resource]
-script = ExtResource("1_ywqcq")
-metadata/_custom_type_script = "uid://dj5wk41vxghlk"
