@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://cnm6t70cni2g1" path="res://src/Systems/Mob/mob_data.gd" id="5_ko1mi"]
 [ext_resource type="PackedScene" uid="uid://b85xpuqmx63h3" path="res://src/Systems/Item/Item.tscn" id="6_w0hsv"]
 
-[sub_resource type="Resource" id="Resource_w0hsv"]
+[sub_resource type="Resource" id="Resource_yrysc"]
 resource_local_to_scene = true
 script = ExtResource("3_yrysc")
 name = "Dagger"
@@ -18,31 +18,31 @@ dimensions = Vector2i(2, 2)
 tags = Array[int]([1])
 metadata/_custom_type_script = "uid://dj5wk41vxghlk"
 
-[sub_resource type="Resource" id="Resource_e1j7a"]
+[sub_resource type="Resource" id="Resource_ko1mi"]
 resource_local_to_scene = true
 script = ExtResource("3_4wuaq")
 life = 20
 mana = 0
 metadata/_custom_type_script = "uid://cioay1a4da3o8"
 
-[sub_resource type="Resource" id="Resource_5tl14"]
+[sub_resource type="Resource" id="Resource_w0hsv"]
 resource_local_to_scene = true
 script = ExtResource("5_ko1mi")
 mob_texture = ExtResource("4_yrysc")
-base_stats = SubResource("Resource_e1j7a")
+base_stats = SubResource("Resource_ko1mi")
 metadata/_custom_type_script = "uid://cnm6t70cni2g1"
 
 [node name="Level0" type="Node2D"]
 script = ExtResource("1_retdg")
 
-[node name="Item" parent="." instance=ExtResource("6_w0hsv")]
-position = Vector2(553, 510)
-item_data = SubResource("Resource_w0hsv")
-
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 3283.0
 offset_bottom = 1308.0
 color = Color(0.15294118, 0.15294118, 0.26666668, 1)
+
+[node name="Item" parent="." instance=ExtResource("6_w0hsv")]
+position = Vector2(553, 510)
+item_data = SubResource("Resource_yrysc")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
@@ -50,4 +50,4 @@ position = Vector2(340, 660)
 
 [node name="Mob" parent="." instance=ExtResource("2_q13la")]
 position = Vector2(740, 315)
-mob_data = SubResource("Resource_5tl14")
+mob_data = SubResource("Resource_w0hsv")

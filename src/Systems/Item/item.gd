@@ -16,6 +16,6 @@ func _ready() -> void:
 	item_label.self_modulate = rarity_color
 	border_container.self_modulate = rarity_color
 
-func _on_border_container_gui_input(event: InputEvent) -> void:
-	print(event)
-	pass # Replace with function body.
+func _on_border_container_gui_input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("interaction"):
+		Global.try_pick_up_item(item_data)

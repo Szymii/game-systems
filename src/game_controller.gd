@@ -34,6 +34,7 @@ func change_gui_scene(new_scene: String) -> void:
 	var scene: Control = packed_scene.instantiate() as Control
 	gui.add_child(scene)
 	current_gui_scene = scene
+	gui.visible = true
 
 func clear_world_scene() -> void:
 	if current_world_scene:
@@ -46,6 +47,7 @@ func clear_gui_scene() -> void:
 		gui.remove_child(current_gui_scene)
 		current_gui_scene.queue_free()
 		current_gui_scene = null
+	gui.visible = false
 
 func _on_game_started(character_id: String) -> void:
 	var character_data := SavesManager.load_character_data(character_id)
@@ -54,7 +56,7 @@ func _on_game_started(character_id: String) -> void:
 		return
 	
 	var player := _spawn_player(character_data)
-	_load_level("res://src/Levels/Level0/Level_0.tscn",player)
+	_load_level("res://src/Levels/Level0/Level_0.tscn", player)
 	clear_gui_scene()
 
 func _spawn_player(data: SavedCharacterData) -> Player:
