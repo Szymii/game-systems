@@ -18,4 +18,4 @@ func _ready() -> void:
 
 func _on_border_container_gui_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interaction"):
-		Global.try_pick_up_item(item_data)
+		Global.try_pick_up_item(item_data, func() -> void: queue_free())

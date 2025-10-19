@@ -10,11 +10,27 @@ var slot_data: Array[InventoryItem] = []
 var held_item_intersects: bool = false
 
 func _ready() -> void:
-	create_slots()
-	init_slot_data()
+	_create_slots()
+	_init_slot_data()
 
+func attempt_to_add_item_data(item: InventoryItem, on_success: Callable) -> bool:
+	var slot_index: int = 0
+	while slot_index < slot_data.size():
+		if _item_fits(slot_index, item.data.dimensions):
+			break
+		slot_index += 1
+	if slot_index >= slot_data.size():
+		return false
+	
+	for y in item.data.dimensions.y:
+		for x in item.data.dimensions.x:
+			slot_data[slot_index + x + y * columns] = item
+	
+	on_success.call() # addChild
+	item.set_init_position(_get_coords_from_slot_index(slot_index))
+	return true
 
-func create_slots() -> void:
+func _create_slots() -> void:
 	self.columns = dimensions.x
 	for y in dimensions.y:
 		for x in dimensions.x:
@@ -25,51 +41,51 @@ func _gui_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interaction"):
 		var held_item := get_tree().get_first_node_in_group("held_item") as InventoryItem
 		if !held_item:
-			var slot_index := get_slot_index_from_coords(get_global_mouse_position())
+			var slot_index := _get_slot_index_from_coords(get_global_mouse_position())
 			var item := slot_data[slot_index]
 			if !item:
 				return
 			item.get_picked_up()
-			remove_item_from_slot_data(item)
+			_remove_item_from_slot_data(item)
 		else:
 			if !held_item_intersects: return
 			var offset := Vector2(SLOT_SIZE, SLOT_SIZE) / 2
-			var index := get_slot_index_from_coords(held_item.anchor_point + offset)
-			var items := items_in_area(index, held_item.data.dimensions)
+			var index := _get_slot_index_from_coords(held_item.anchor_point + offset)
+			var items := _items_in_area(index, held_item.data.dimensions)
 			if items.size():
 				if items.size() == 1:
 					@warning_ignore("unsafe_cast")
 					var item_to_swap := items[0] as InventoryItem
 					if item_to_swap:
-						held_item.get_placed(get_coords_from_slot_index(index))
-						remove_item_from_slot_data(item_to_swap)
-						add_item_to_slot_data(index, held_item)
+						held_item.get_placed(_get_coords_from_slot_index(index))
+						_remove_item_from_slot_data(item_to_swap)
+						_add_item_to_slot_data(index, held_item)
 						item_to_swap.get_picked_up()
 				return
-			held_item.get_placed(get_coords_from_slot_index(index))
-			add_item_to_slot_data(index, held_item)
+			held_item.get_placed(_get_coords_from_slot_index(index))
+			_add_item_to_slot_data(index, held_item)
 	if event is InputEventMouseMotion:
 		var held_item_node: InventoryItem = get_tree().get_first_node_in_group("held_item") as InventoryItem
 		if held_item_node:
-			detect_held_item_intersection(held_item_node)
+			_detect_held_item_intersection(held_item_node)
 
-func detect_held_item_intersection(held_item: InventoryItem) -> void:
+func _detect_held_item_intersection(held_item: InventoryItem) -> void:
 	var h_rect := Rect2(held_item.anchor_point, held_item.size)
 	var g_rect := Rect2(global_position, size)
 	var inter := h_rect.intersection(g_rect).size
 	held_item_intersects = (inter.x * inter.y) / (held_item.size.x * held_item.size.y) > 0.8
 
-func remove_item_from_slot_data(item: InventoryItem) -> void:
+func _remove_item_from_slot_data(item: InventoryItem) -> void:
 	for i in slot_data.size():
 		if slot_data[i] == item:
 			slot_data[i] = null
 
-func add_item_to_slot_data(index: int, item: InventoryItem) -> void:
+func _add_item_to_slot_data(index: int, item: InventoryItem) -> void:
 	for y in item.data.dimensions.y:
 		for x in item.data.dimensions.x:
 			slot_data[index + x + y * columns] = item
 
-func items_in_area(index: int, item_dimensions: Vector2i) -> Array:
+func _items_in_area(index: int, item_dimensions: Vector2i) -> Array:
 	var items: Dictionary = {}
 	for y in item_dimensions.y:
 		for x in item_dimensions.x:
@@ -81,27 +97,11 @@ func items_in_area(index: int, item_dimensions: Vector2i) -> Array:
 				items[item] = true
 	return items.keys() if items.size() else []
 
-func init_slot_data() -> void:
+func _init_slot_data() -> void:
 	slot_data.resize(dimensions.x * dimensions.y)
 	slot_data.fill(null)
 
-func attempt_to_add_item_data(item: InventoryItem) -> bool:
-	var slot_index: int = 0
-	while slot_index < slot_data.size():
-		if item_fits(slot_index, item.data.dimensions):
-			break
-		slot_index += 1
-	if slot_index >= slot_data.size():
-		return false
-	
-	for y in item.data.dimensions.y:
-		for x in item.data.dimensions.x:
-			slot_data[slot_index + x + y * columns] = item
-	
-	item.set_init_position(get_coords_from_slot_index(slot_index))
-	return true
-
-func item_fits(index: int, item_dimensions: Vector2i) -> bool:
+func _item_fits(index: int, item_dimensions: Vector2i) -> bool:
 	for y in item_dimensions.y:
 		for x in item_dimensions.x:
 			var curr_index := index + x + y * columns
@@ -115,7 +115,7 @@ func item_fits(index: int, item_dimensions: Vector2i) -> bool:
 				return false
 	return true
 
-func get_slot_index_from_coords(coords: Vector2i) -> int:
+func _get_slot_index_from_coords(coords: Vector2i) -> int:
 	coords -= Vector2i(self.global_position)
 	coords = coords / SLOT_SIZE
 	var index := coords.x + coords.y * columns
@@ -123,7 +123,7 @@ func get_slot_index_from_coords(coords: Vector2i) -> int:
 		return -1
 	return index
 
-func get_coords_from_slot_index(index: int) -> Vector2i:
+func _get_coords_from_slot_index(index: int) -> Vector2i:
 	@warning_ignore("integer_division")
 	var row := index / columns
 	var column := index % columns
