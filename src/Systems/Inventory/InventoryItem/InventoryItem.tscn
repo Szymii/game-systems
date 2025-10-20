@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://blbpgn8cm6sqc"]
+[gd_scene load_steps=3 format=3 uid="uid://blbpgn8cm6sqc"]
 
 [ext_resource type="Script" uid="uid://bn4xy1jvtktp6" path="res://src/Systems/Inventory/InventoryItem/inventory_item.gd" id="1_6pthi"]
+[ext_resource type="StyleBox" uid="uid://dqlpe0g3eofpt" path="res://src/Common/UI/item_style_box_flat.tres" id="2_fomxj"]
 
 [node name="InventoryItem" type="Sprite2D"]
 script = ExtResource("1_6pthi")
+
+[node name="BorderContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("2_fomxj")
