@@ -10,6 +10,9 @@ extends PanelContainer
 var controller: InventoryController
 var drag_manager: DragDropManager
 
+func get_drag_manager() -> DragDropManager:
+	return drag_manager
+
 func _ready() -> void:
 	_initialize_inventory()
 	Global.try_pick_up_item_signal.connect(_try_add_item)

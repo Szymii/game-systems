@@ -16,11 +16,8 @@ func initialize(_controller: InventoryController, _drag_manager: DragDropManager
 	drag_manager = _drag_manager
 	
 	controller.item_added_to_inventory.connect(_on_item_added)
-	controller.item_removed_from_inventory.connect(_on_item_removed)
 	controller.inventory_loaded.connect(_on_inventory_loaded)
 	
-	drag_manager.item_pickup_started.connect(_on_item_pickup_started)
-	drag_manager.item_placed.connect(_on_item_placed)
 	drag_manager.item_dropped.connect(_on_item_dropped)
 	
 	_create_slots()
@@ -105,21 +102,27 @@ func _detect_held_item_intersection(held_item: InventoryItemView) -> void:
 	_held_item_intersects = (inter.x * inter.y) / (held_item.size.x * held_item.size.y) > 0.8
 
 func _on_item_added(item_data: ItemData, slot_index: int) -> void:
-	if _item_views.has(item_data):
-		var item_view: InventoryItemView = _item_views[item_data]
-		if is_instance_valid(item_view):
-			var pos := controller.data.get_slot_coords(slot_index, global_position)
-			item_view.set_position_from_slot(pos)
-			item_view.slot_index = slot_index
-		else:
-			# View jest invalid, usuń z dictionary i stwórz nowy
-			_item_views.erase(item_data)
-			_create_item_view(item_data, slot_index)
+	var held_view := drag_manager.get_held_item()
+
+	if held_view and held_view.item_data == item_data:
+		drag_manager.end_drag()
+		var pos := controller.data.get_slot_coords(slot_index, global_position)
+		held_view.set_position_from_slot(pos)
+		held_view.slot_index = slot_index
+		_item_views[item_data] = held_view
+		return
+	# if _item_views.has(item_data):
+	# 	print("2")
+	# 	var item_view: InventoryItemView = _item_views[item_data]
+	# 	if is_instance_valid(item_view):
+	# 		var pos := controller.data.get_slot_coords(slot_index, global_position)
+	# 		item_view.set_position_from_slot(pos)
+	# 		item_view.slot_index = slot_index
+	# 	else:
+	# 		_item_views.erase(item_data)
+	# 		_create_item_view(item_data, slot_index)
 	else:
 		_create_item_view(item_data, slot_index)
-
-func _on_item_removed(_item_data: ItemData, _slot_index: int) -> void:
-	pass
 
 func _on_inventory_loaded() -> void:
 	_clear_all_views()
@@ -161,16 +164,7 @@ func _find_item_slot(item_data: ItemData) -> int:
 func _get_slot_index_from_coords(coords: Vector2) -> int:
 	return controller.data.get_slot_from_coords(coords, global_position)
 
-func _on_item_pickup_started(_item_view: InventoryItemView) -> void:
-	pass
-
-func _on_item_placed(_item_view: InventoryItemView, _slot_index: int) -> void:
-	pass
-
 func _on_item_dropped(item_data: ItemData, item_view: InventoryItemView) -> void:
-	# Usuń view z dictionary i zwolnij węzeł
 	if _item_views.has(item_data):
 		_item_views.erase(item_data)
-	
-	if is_instance_valid(item_view):
 		item_view.queue_free()

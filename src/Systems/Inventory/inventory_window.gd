@@ -2,9 +2,18 @@ class_name InventoryWindow
 extends PanelContainer
 
 @onready var inventory: Inventory = %Inventory
+@onready var equipment: Equipment = %Equipment
 
 func _ready() -> void:
 	visible = false
+	_initialize_systems()
+
+func _initialize_systems() -> void:
+	await get_tree().process_frame
+	
+	if inventory and equipment:
+		var drag_manager := inventory.get_drag_manager()
+		equipment.initialize(drag_manager)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):

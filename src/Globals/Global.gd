@@ -5,7 +5,7 @@ signal game_started_signal(character_id: String)
 signal level_change_requested_signal(level_path: String)
 
 signal try_pick_up_item_signal(item_data: ItemData, callback: Callable)
-
+signal equipment_changed_signal()
 var game_controller: GameController
 var current_character_id: String
 
@@ -21,3 +21,6 @@ func trigger_level_change(level_path: String) -> void:
 
 func try_pick_up_item(item_data: ItemData, callback: Callable) -> void:
 	try_pick_up_item_signal.emit(item_data, callback)
+
+func equipment_changed() -> void:
+	equipment_changed_signal.emit()
