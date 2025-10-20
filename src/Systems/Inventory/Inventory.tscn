@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://40kjy1pxs033"]
+[gd_scene load_steps=16 format=3 uid="uid://40kjy1pxs033"]
 
 [ext_resource type="Script" uid="uid://ccbw5f3peussh" path="res://src/Systems/Inventory/inventory.gd" id="1_78d70"]
 [ext_resource type="StyleBox" uid="uid://bg880v84uyij3" path="res://src/Common/UI/ui_transparent_stylebox.tres" id="1_o150l"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cj4xlfbwvko4s" path="res://src/Systems/Inventory/Equipment/equipment.gd" id="3_ov8x5"]
 [ext_resource type="PackedScene" uid="uid://b4llv633he0u2" path="res://src/Systems/Inventory/InventorySlot.tscn" id="4_o150l"]
 [ext_resource type="Texture2D" uid="uid://cwa1ajmk7kqqi" path="res://assets/UI/Equipment/boots.png" id="4_ogsjd"]
+[ext_resource type="PackedScene" uid="uid://bsjbjhkt0a5wl" path="res://src/Systems/Inventory/Equipment/EquipmentSlot.tscn" id="5_2q4ab"]
 [ext_resource type="Texture2D" uid="uid://dq0kw6jiayggn" path="res://assets/UI/Equipment/shield.png" id="5_6qaew"]
 [ext_resource type="Texture2D" uid="uid://dcgog7axlgouu" path="res://assets/UI/Equipment/helmet.png" id="6_ov8x5"]
 [ext_resource type="PackedScene" uid="uid://b85xpuqmx63h3" path="res://src/Systems/Item/Item.tscn" id="10_6qaew"]
@@ -41,7 +42,7 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Equipment" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Equipment" type="MarginContainer" parent="MarginContainer/VBoxContainer" groups=["Equipment"]]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -55,113 +56,32 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer"]
 layout_mode = 2
 
-[node name="WeaponSlot" type="ColorRect" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer"]
+[node name="Weapon" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer" instance=ExtResource("5_2q4ab")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-color = Color(0.06666667, 0, 0.23921569, 0.3137255)
-
-[node name="ColorRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer/WeaponSlot"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("2_msave")
-expand_mode = 1
 
-[node name="Earring" type="ColorRect" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer"]
+[node name="Earring" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer" instance=ExtResource("5_2q4ab")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-color = Color(0.06666667, 0, 0.23921569, 0.3137255)
+slot_type = 8
 
-[node name="ColorRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer/Earring"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-
-[node name="BodyArmour" type="ColorRect" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer"]
+[node name="BodyArmour" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer" instance=ExtResource("5_2q4ab")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-color = Color(0.06666667, 0, 0.23921569, 0.3137255)
-
-[node name="ColorRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer/BodyArmour"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("3_0tgut")
-expand_mode = 1
+slot_type = 4
 
-[node name="Gloves" type="ColorRect" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer"]
+[node name="Gloves" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer" instance=ExtResource("5_2q4ab")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-color = Color(0.06666667, 0, 0.23921569, 0.3137255)
+slot_type = 5
 
-[node name="ColorRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer/Gloves"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-
-[node name="Boots" type="ColorRect" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer"]
+[node name="Boots" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer" instance=ExtResource("5_2q4ab")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-color = Color(0.06666667, 0, 0.23921569, 0.3137255)
-
-[node name="ColorRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer/Boots"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("4_ogsjd")
-expand_mode = 1
+slot_type = 6
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer"]
 layout_mode = 2
@@ -171,112 +91,32 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_o150l")
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer"]
 layout_mode = 2
 
-[node name="WeaponShieldSlot" type="ColorRect" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer2"]
+[node name="WeaponShield" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer2" instance=ExtResource("5_2q4ab")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-color = Color(0.06666667, 0, 0.23921569, 0.3137255)
-
-[node name="ColorRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer2/WeaponShieldSlot"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("5_6qaew")
-expand_mode = 1
+slot_type = 2
 
-[node name="Helmet" type="ColorRect" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer2"]
+[node name="Helmet" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer2" instance=ExtResource("5_2q4ab")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-color = Color(0.06666667, 0, 0.23921569, 0.3137255)
-
-[node name="ColorRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer2/Helmet"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("6_ov8x5")
-expand_mode = 1
+slot_type = 3
 
-[node name="Necklace" type="ColorRect" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer2"]
+[node name="Necklace" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer2" instance=ExtResource("5_2q4ab")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-color = Color(0.06666667, 0, 0.23921569, 0.3137255)
+slot_type = 7
 
-[node name="ColorRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer2/Necklace"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-
-[node name="RingRight" type="ColorRect" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer2"]
+[node name="Right" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer2" instance=ExtResource("5_2q4ab")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-color = Color(0.06666667, 0, 0.23921569, 0.3137255)
+slot_type = 9
 
-[node name="ColorRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer2/RingRight"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-
-[node name="Belt" type="ColorRect" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer2"]
+[node name="Belt" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer2" instance=ExtResource("5_2q4ab")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-color = Color(0.06666667, 0, 0.23921569, 0.3137255)
-
-[node name="ColorRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Equipment/VBoxContainer/VBoxContainer2/Belt"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
+slot_type = 10
 
 [node name="Inventory" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

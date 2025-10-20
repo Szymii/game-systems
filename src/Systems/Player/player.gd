@@ -9,7 +9,7 @@ extends CharacterBody2D
 
 var basic_data: BasicCharacterData
 var base_stats_table: StatsTable
-# var equipped_items: Array[ItemData] = []
+var equipped_items: Array[ItemData] = []
 # var skill_tree: SkillTreeData
 # var buffs: Array[BuffData] = []
 
@@ -21,6 +21,8 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _ready() -> void:
+	Global.equipment_changed_signal.connect(_on_equipment_changed)
+
 	if basic_data:
 		name_label.text = basic_data.character_name
 	if player_status:
@@ -36,3 +38,7 @@ func initialize(data: SavedCharacterData) -> void:
 	stats_runtime = StatsRuntime.new()
 	add_child(stats_runtime)
 	stats_runtime.setup(stats_manager)
+
+func _on_equipment_changed() -> void:
+	var equipment := get_tree().get_first_node_in_group("Equipment") as Equipment
+	equipped_items = equipment.get_equipped_items()

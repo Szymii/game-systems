@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dmqem8iv6gcpl" path="res://src/Systems/Mob/Mob.tscn" id="2_q13la"]
 [ext_resource type="Script" uid="uid://cioay1a4da3o8" path="res://src/Systems/Stats/stats_table.gd" id="3_4wuaq"]
 [ext_resource type="Script" uid="uid://dj5wk41vxghlk" path="res://src/Systems/Item/item_data.gd" id="3_yrysc"]
-[ext_resource type="Texture2D" uid="uid://cvaacmtonlh02" path="res://assets/weapons/dagger.png" id="4_ko1mi"]
+[ext_resource type="Texture2D" uid="uid://cvaacmtonlh02" path="res://assets/items/weapons/dagger.png" id="4_ko1mi"]
 [ext_resource type="Texture2D" uid="uid://dcrcnaqt7tugc" path="res://assets/mobs/bug.png" id="4_yrysc"]
 [ext_resource type="Script" uid="uid://cnm6t70cni2g1" path="res://src/Systems/Mob/mob_data.gd" id="5_ko1mi"]
 [ext_resource type="PackedScene" uid="uid://b85xpuqmx63h3" path="res://src/Systems/Item/Item.tscn" id="6_w0hsv"]

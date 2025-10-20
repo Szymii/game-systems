@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsjbjhkt0a5wl"]
+
+[ext_resource type="Script" uid="uid://bnnlmuvjxo6m3" path="res://src/Systems/Inventory/Equipment/equipment_slot.gd" id="1_l5ra8"]
+
+[node name="EquipmentSlot" type="ColorRect"]
+custom_minimum_size = Vector2(64, 64)
+color = Color(0.06666667, 0, 0.23921569, 0.3137255)
+script = ExtResource("1_l5ra8")
+
+[node name="ColorRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1

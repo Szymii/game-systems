@@ -110,17 +110,6 @@ func _on_item_added(item_data: ItemData, slot_index: int) -> void:
 		held_view.set_position_from_slot(pos)
 		held_view.slot_index = slot_index
 		_item_views[item_data] = held_view
-		return
-	# if _item_views.has(item_data):
-	# 	print("2")
-	# 	var item_view: InventoryItemView = _item_views[item_data]
-	# 	if is_instance_valid(item_view):
-	# 		var pos := controller.data.get_slot_coords(slot_index, global_position)
-	# 		item_view.set_position_from_slot(pos)
-	# 		item_view.slot_index = slot_index
-	# 	else:
-	# 		_item_views.erase(item_data)
-	# 		_create_item_view(item_data, slot_index)
 	else:
 		_create_item_view(item_data, slot_index)
 

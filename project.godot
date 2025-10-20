@@ -55,6 +55,7 @@ GraphPoint="Nodes on the graph"
 SavableTreeElements=""
 GraphStartingPoint="Starting points from TreeCenter"
 player=""
+Equipment=""
 
 [gui]
 
