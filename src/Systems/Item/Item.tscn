@@ -5,6 +5,7 @@
 [ext_resource type="StyleBox" uid="uid://dqlpe0g3eofpt" path="res://src/Common/UI/item_style_box_flat.tres" id="2_nbaa3"]
 
 [node name="Item" type="Node2D"]
+z_index = 1
 script = ExtResource("1_ugo5y")
 item_data = ExtResource("2_jak50")
 

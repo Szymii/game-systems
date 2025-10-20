@@ -13,7 +13,7 @@ func _initialize_systems() -> void:
 	
 	if inventory and equipment:
 		var drag_manager := inventory.get_drag_manager()
-		equipment.initialize(drag_manager)
+		equipment.initialize(drag_manager, inventory)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):

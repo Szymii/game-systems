@@ -6,7 +6,7 @@ extends Resource
 @export var basic_character_data: BasicCharacterData
 @export var character_stats: StatsTable
 @export var inventory_items: Array[SavedInventoryItem] = []
-# equipment
+@export var equipment_items: Array[SavedEquipmentItem] = []
 # skill tree
 
 func setup(_character_id: String, _basic_character_data: BasicCharacterData, _character_stats: StatsTable) -> void:

@@ -1,8 +1,6 @@
 class_name DragDropManager
 extends Node
 
-signal item_pickup_started(item_view: InventoryItemView)
-signal item_pickup_ended(item_view: InventoryItemView)
 signal item_dropped(item_data: ItemData, item_view: InventoryItemView)
 
 var _held_item: InventoryItemView = null
@@ -19,7 +17,6 @@ func start_drag(item_view: InventoryItemView) -> void:
 	_held_item = item_view
 	_is_dragging = true
 	item_view.z_index = 10
-	item_pickup_started.emit(item_view)
 
 func end_drag() -> void:
 	if not _held_item:
@@ -27,7 +24,6 @@ func end_drag() -> void:
 	
 	_held_item.z_index = 0
 	_is_dragging = false
-	item_pickup_ended.emit(_held_item)
 	_held_item = null
 
 func get_held_item() -> InventoryItemView:

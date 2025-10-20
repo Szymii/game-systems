@@ -19,9 +19,10 @@ var _slots: Array[EquipmentSlot] = []
 var _equipped_items: Dictionary = {}
 var _item_views: Dictionary = {}
 
-func initialize(_drag_manager: DragDropManager) -> void:
+func initialize(_drag_manager: DragDropManager, inventory: Inventory) -> void:
 	drag_manager = _drag_manager
 	_setup_slots()
+	_load_equipment.call_deferred(inventory)
 
 func get_equipped_items() -> Array[ItemData]:
 	var items: Array[ItemData] = []
@@ -58,6 +59,7 @@ func _equip_item(slot: EquipmentSlot, held_view: InventoryItemView) -> void:
 		_equipped_items.erase(slot)
 	
 	drag_manager.end_drag()
+	save_equipment.call_deferred()
 	Global.equipment_changed()
 	
 	var slot_center := slot.global_position + slot.size / 2
@@ -82,4 +84,38 @@ func _unequip_item(slot: EquipmentSlot) -> void:
 	_equipped_items.erase(slot)
 	
 	drag_manager.start_drag(item_view)
+	save_equipment.call_deferred()
 	Global.equipment_changed()
+
+func save_equipment() -> void:
+	var saved_items: Array[SavedEquipmentItem] = []
+	for slot: EquipmentSlot in _equipped_items.keys():
+		var saved_item := SavedEquipmentItem.new()
+		saved_item.item_data = _equipped_items[slot]
+		saved_item.slot_type = slot.slot_type
+		saved_items.append(saved_item)
+	
+	SavesManager.save_equipment(Global.current_character_id, saved_items)
+
+func _load_equipment(inventory: Inventory) -> void:
+	var character_data := SavesManager.load_character_data(Global.current_character_id)
+	if !character_data or character_data.equipment_items.size() <= 0:
+		return
+
+	for saved_item in character_data.equipment_items:
+		var target_slot: EquipmentSlot = null
+		for slot in _slots:
+			if slot.slot_type == saved_item.slot_type:
+				target_slot = slot
+				break
+		
+		if target_slot:
+			var item_view: InventoryItemView = inventory_item_scene.instantiate()
+			item_view.set_item_data(saved_item.item_data)
+			inventory.add_child(item_view)
+			
+			var slot_center := target_slot.global_position + target_slot.size / 2
+			item_view.set_position_from_slot(slot_center - item_view.size / 2)
+			
+			_equipped_items[target_slot] = saved_item.item_data
+			_item_views[target_slot] = item_view

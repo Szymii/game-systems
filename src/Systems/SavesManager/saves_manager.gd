@@ -57,3 +57,12 @@ func save_inventory(_character_id: String, _inventory_items: Array[SavedInventor
 	
 	character_data.inventory_items = _inventory_items
 	ResourceSaver.save(character_data, "user://" + _character_id + ".tres")
+
+func save_equipment(_character_id: String, _equipment_items: Array[SavedEquipmentItem]) -> void:
+	var character_data := load_character_data(_character_id)
+	if not character_data:
+		push_error("Cannot save equipment: character not found")
+		return
+	
+	character_data.equipment_items = _equipment_items
+	ResourceSaver.save(character_data, "user://" + _character_id + ".tres")
