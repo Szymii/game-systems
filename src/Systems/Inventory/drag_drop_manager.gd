@@ -4,6 +4,7 @@ extends Node
 signal item_pickup_started(item_view: InventoryItemView)
 signal item_pickup_ended(item_view: InventoryItemView)
 signal item_placed(item_view: InventoryItemView, slot_index: int)
+signal item_dropped(item_data: ItemData, item_view: InventoryItemView)
 
 var _held_item: InventoryItemView = null
 var _is_dragging: bool = false
@@ -45,3 +46,16 @@ func is_dragging() -> bool:
 func cancel_drag() -> void:
 	if _held_item:
 		end_drag()
+
+func drop_held_item() -> ItemData:
+	if not _held_item:
+		return null
+	
+	var item_data := _held_item.item_data
+	var item_view := _held_item
+	_held_item = null
+	_is_dragging = false
+	
+	item_dropped.emit(item_data, item_view)
+	
+	return item_data

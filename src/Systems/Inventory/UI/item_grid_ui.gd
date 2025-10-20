@@ -21,6 +21,7 @@ func initialize(_controller: InventoryController, _drag_manager: DragDropManager
 	
 	drag_manager.item_pickup_started.connect(_on_item_pickup_started)
 	drag_manager.item_placed.connect(_on_item_placed)
+	drag_manager.item_dropped.connect(_on_item_dropped)
 	
 	_create_slots()
 
@@ -106,9 +107,14 @@ func _detect_held_item_intersection(held_item: InventoryItemView) -> void:
 func _on_item_added(item_data: ItemData, slot_index: int) -> void:
 	if _item_views.has(item_data):
 		var item_view: InventoryItemView = _item_views[item_data]
-		var pos := controller.data.get_slot_coords(slot_index, global_position)
-		item_view.set_position_from_slot(pos)
-		item_view.slot_index = slot_index
+		if is_instance_valid(item_view):
+			var pos := controller.data.get_slot_coords(slot_index, global_position)
+			item_view.set_position_from_slot(pos)
+			item_view.slot_index = slot_index
+		else:
+			# View jest invalid, usuń z dictionary i stwórz nowy
+			_item_views.erase(item_data)
+			_create_item_view(item_data, slot_index)
 	else:
 		_create_item_view(item_data, slot_index)
 
@@ -160,3 +166,11 @@ func _on_item_pickup_started(_item_view: InventoryItemView) -> void:
 
 func _on_item_placed(_item_view: InventoryItemView, _slot_index: int) -> void:
 	pass
+
+func _on_item_dropped(item_data: ItemData, item_view: InventoryItemView) -> void:
+	# Usuń view z dictionary i zwolnij węzeł
+	if _item_views.has(item_data):
+		_item_views.erase(item_data)
+	
+	if is_instance_valid(item_view):
+		item_view.queue_free()

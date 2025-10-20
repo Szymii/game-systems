@@ -15,7 +15,6 @@ script = ExtResource("3_yrysc")
 name = "Dagger"
 texture = ExtResource("4_ko1mi")
 dimensions = Vector2i(2, 2)
-rarity = 4
 tags = Array[int]([1])
 metadata/_custom_type_script = "uid://dj5wk41vxghlk"
 

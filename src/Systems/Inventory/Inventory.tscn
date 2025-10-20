@@ -1,16 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://40kjy1pxs033"]
+[gd_scene load_steps=14 format=3 uid="uid://40kjy1pxs033"]
 
 [ext_resource type="Script" uid="uid://ccbw5f3peussh" path="res://src/Systems/Inventory/inventory.gd" id="1_78d70"]
 [ext_resource type="StyleBox" uid="uid://bg880v84uyij3" path="res://src/Common/UI/ui_transparent_stylebox.tres" id="1_o150l"]
 [ext_resource type="PackedScene" uid="uid://blbpgn8cm6sqc" path="res://src/Systems/Inventory/InventoryItem/InventoryItem.tscn" id="2_borx4"]
 [ext_resource type="Texture2D" uid="uid://bcrvm6jexl280" path="res://assets/UI/Equipment/weapon.png" id="2_msave"]
 [ext_resource type="Script" uid="uid://bppee8ulcou5r" path="res://src/Systems/Inventory/inventory_window.gd" id="2_ogsjd"]
-[ext_resource type="Script" path="res://src/Systems/Inventory/UI/item_grid_ui.gd" id="2_w2ucx"]
+[ext_resource type="Script" uid="uid://cupu43inugtks" path="res://src/Systems/Inventory/UI/item_grid_ui.gd" id="2_w2ucx"]
 [ext_resource type="Texture2D" uid="uid://bphirbyysprrv" path="res://assets/UI/Equipment/body_armour.png" id="3_0tgut"]
 [ext_resource type="PackedScene" uid="uid://b4llv633he0u2" path="res://src/Systems/Inventory/InventorySlot.tscn" id="4_o150l"]
 [ext_resource type="Texture2D" uid="uid://cwa1ajmk7kqqi" path="res://assets/UI/Equipment/boots.png" id="4_ogsjd"]
 [ext_resource type="Texture2D" uid="uid://dq0kw6jiayggn" path="res://assets/UI/Equipment/shield.png" id="5_6qaew"]
 [ext_resource type="Texture2D" uid="uid://dcgog7axlgouu" path="res://assets/UI/Equipment/helmet.png" id="6_ov8x5"]
+[ext_resource type="PackedScene" uid="uid://b85xpuqmx63h3" path="res://src/Systems/Item/Item.tscn" id="10_6qaew"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o150l"]
 content_margin_left = 0.0
@@ -279,6 +280,7 @@ layout_mode = 2
 script = ExtResource("1_78d70")
 inventory_dimensions = Vector2i(14, 6)
 inventory_item_scene = ExtResource("2_borx4")
+item_scene = ExtResource("10_6qaew")
 
 [node name="ItemGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/Inventory"]
 unique_name_in_owner = true
