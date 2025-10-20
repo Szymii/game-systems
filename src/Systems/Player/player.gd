@@ -9,7 +9,7 @@ extends CharacterBody2D
 
 var basic_data: BasicCharacterData
 var base_stats_table: StatsTable
-var equipment_data: EquipmentData
+# var equipped_items: Array[ItemData] = []
 # var skill_tree: SkillTreeData
 # var buffs: Array[BuffData] = []
 
@@ -29,7 +29,6 @@ func _ready() -> void:
 func initialize(data: SavedCharacterData) -> void:
 	basic_data = data.basic_character_data
 	base_stats_table = data.character_stats
-	equipment_data = EquipmentData.new()
 
 	stats_manager = StatsManager.new()
 	stats_manager.setup(base_stats_table)

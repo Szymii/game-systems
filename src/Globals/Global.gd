@@ -6,6 +6,7 @@ signal level_change_requested_signal(level_path: String)
 
 signal try_pick_up_item_signal(item_data: ItemData, callback: Callable)
 signal equipment_changed_signal()
+
 var game_controller: GameController
 var current_character_id: String
 
