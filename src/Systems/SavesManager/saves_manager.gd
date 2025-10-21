@@ -1,6 +1,7 @@
 extends Node
 
 var current_characters: Array[SavedCharacter] = []
+var tem_char_data: SavedCharacterData
 
 func _ready() -> void:
 	_load_characters()
@@ -47,22 +48,13 @@ func load_character_data(character_id: String) -> SavedCharacterData:
 		return null
 	
 	var character_data := load(file_path) as SavedCharacterData
+	tem_char_data = character_data
 	return character_data
 
 func save_inventory(_character_id: String, _inventory_items: Array[SavedInventoryItem]) -> void:
-	var character_data := load_character_data(_character_id)
-	if not character_data:
-		push_error("Cannot save inventory: character not found")
-		return
-	
-	character_data.inventory_items = _inventory_items
-	ResourceSaver.save(character_data, "user://" + _character_id + ".tres")
+	tem_char_data.inventory_items = _inventory_items
+	ResourceSaver.save(tem_char_data, "user://" + _character_id + ".tres")
 
 func save_equipment(_character_id: String, _equipment_items: Array[SavedEquipmentItem]) -> void:
-	var character_data := load_character_data(_character_id)
-	if not character_data:
-		push_error("Cannot save equipment: character not found")
-		return
-	
-	character_data.equipment_items = _equipment_items
-	ResourceSaver.save(character_data, "user://" + _character_id + ".tres")
+	tem_char_data.equipment_items = _equipment_items
+	ResourceSaver.save(tem_char_data, "user://" + _character_id + ".tres")
