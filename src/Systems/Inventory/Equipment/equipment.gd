@@ -24,6 +24,8 @@ func initialize(_drag_manager: DragDropManager) -> void:
 	_setup_slots()
 	_load_equipment()
 
+	drag_manager.item_dropped.connect(_on_item_dropped)
+
 func get_equipped_items() -> Array[ItemData]:
 	var items: Array[ItemData] = []
 	for item_data: ItemData in _equipped_items.values():
@@ -119,3 +121,6 @@ func _load_equipment() -> void:
 			
 			_equipped_items[target_slot] = saved_item.item_data
 			_item_views[target_slot] = item_view
+
+func _on_item_dropped(_item_data: ItemData, item_view: InventoryItemView) -> void:
+	item_view.queue_free()
