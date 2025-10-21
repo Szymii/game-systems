@@ -106,6 +106,8 @@ func _on_item_added(item_data: ItemData, slot_index: int) -> void:
 
 	if held_view and held_view.item_data == item_data:
 		drag_manager.end_drag()
+		if held_view.get_parent() != get_parent():
+			held_view.reparent(get_parent())
 		var pos := controller.data.get_slot_coords(slot_index, global_position)
 		held_view.set_position_from_slot(pos)
 		held_view.slot_index = slot_index

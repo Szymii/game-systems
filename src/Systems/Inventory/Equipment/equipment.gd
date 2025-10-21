@@ -19,10 +19,10 @@ var _slots: Array[EquipmentSlot] = []
 var _equipped_items: Dictionary = {}
 var _item_views: Dictionary = {}
 
-func initialize(_drag_manager: DragDropManager, inventory: Inventory) -> void:
+func initialize(_drag_manager: DragDropManager) -> void:
 	drag_manager = _drag_manager
 	_setup_slots()
-	_load_equipment.call_deferred(inventory)
+	_load_equipment()
 
 func get_equipped_items() -> Array[ItemData]:
 	var items: Array[ItemData] = []
@@ -97,7 +97,7 @@ func save_equipment() -> void:
 	
 	SavesManager.save_equipment(Global.current_character_id, saved_items)
 
-func _load_equipment(inventory: Inventory) -> void:
+func _load_equipment() -> void:
 	var character_data := SavesManager.load_character_data(Global.current_character_id)
 	if !character_data or character_data.equipment_items.size() <= 0:
 		return
@@ -112,7 +112,7 @@ func _load_equipment(inventory: Inventory) -> void:
 		if target_slot:
 			var item_view: InventoryItemView = inventory_item_scene.instantiate()
 			item_view.set_item_data(saved_item.item_data)
-			inventory.add_child(item_view)
+			target_slot.add_child(item_view)
 			
 			var slot_center := target_slot.global_position + target_slot.size / 2
 			item_view.set_position_from_slot(slot_center - item_view.size / 2)
